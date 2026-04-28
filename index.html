@@ -3,51 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ JOJO STAND ARCHIVE ⚡ | 50 Stands + Portadores</title>
+    <title>⚡ HEAVEN ASCENSION ⚡ | 50 Stands + Evolução + Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: #0a0a0a;
-            background-image: 
-                radial-gradient(circle at 25% 50%, rgba(241,196,15,0.08) 0%, transparent 50%),
-                radial-gradient(circle at 75% 30%, rgba(220,20,60,0.05) 0%, transparent 50%);
+            background-image: radial-gradient(circle at 25% 50%, rgba(241,196,15,0.08) 0%, transparent 50%);
             color: #e0e0e0;
             font-family: 'Rajdhani', sans-serif;
-            min-height: 100vh;
         }
 
         .header {
             background: linear-gradient(135deg, #000000dd 0%, #0a0a1add 100%);
             backdrop-filter: blur(12px);
-            padding: 2rem 1rem;
+            padding: 1.5rem;
             text-align: center;
             border-bottom: 2px solid #f1c40f;
-            position: relative;
-            overflow: hidden;
         }
 
         .header h1 {
             font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 2rem;
             background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 15px rgba(255,215,0,0.3);
-            letter-spacing: 4px;
-        }
-
-        .header p {
-            margin-top: 0.8rem;
-            color: #aaa;
         }
 
         .stand-counter {
@@ -55,9 +38,50 @@
             background: rgba(241,196,15,0.2);
             padding: 0.3rem 1.2rem;
             border-radius: 40px;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* BARRA DO USUÁRIO */
+        .user-bar {
+            background: #0a0a0ecc;
+            backdrop-filter: blur(12px);
+            padding: 0.6rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 1px solid #f1c40f33;
+        }
+
+        .user-info { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .user-avatar {
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, #f1c40f, #ffa500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #0a0a0a;
+        }
+        .user-name { font-weight: bold; color: #ffd966; }
+        .user-email, .user-stats { font-size: 0.7rem; color: #aaa; }
+
+        .login-btn, .logout-btn, .register-btn {
+            background: none;
+            border: 1px solid #f1c40f;
+            color: #f1c40f;
+            padding: 8px 20px;
+            border-radius: 40px;
+            cursor: pointer;
             font-weight: bold;
         }
+        .login-btn:hover, .register-btn:hover, .logout-btn:hover { background: #f1c40f; color: #0a0a0a; }
+        .register-btn { background: #f1c40f22; margin-left: 10px; }
+        .welcome-badge { background: rgba(241,196,15,0.15); padding: 5px 12px; border-radius: 30px; font-size: 0.75rem; color: #ffd966; }
 
         /* TABS */
         .tabs-container {
@@ -66,17 +90,8 @@
             z-index: 100;
             background: #0a0a0ecc;
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid #f1c40f33;
         }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1rem;
-            flex-wrap: wrap;
-        }
-
+        .tabs { display: flex; justify-content: center; gap: 0.5rem; padding: 0.8rem; flex-wrap: wrap; }
         .tab-btn {
             background: none;
             border: 1px solid #f1c40f66;
@@ -85,206 +100,53 @@
             border-radius: 40px;
             font-family: 'Orbitron', monospace;
             font-weight: 600;
-            font-size: 0.9rem;
             cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
-
-        .tab-btn:hover, .tab-btn.active {
-            background: #f1c40f;
-            color: #0a0a0a;
-            border-color: #f1c40f;
-        }
+        .tab-btn:hover, .tab-btn.active { background: #f1c40f; color: #0a0a0a; }
 
         .filters {
             background: #0a0a0e99;
-            padding: 0.8rem 1rem;
+            padding: 0.8rem;
             display: flex;
             justify-content: center;
             gap: 0.6rem;
             flex-wrap: wrap;
             border-top: 1px solid #f1c40f22;
         }
-
         .filter-btn {
             background: none;
             border: 1px solid #f1c40f66;
             color: #f1e0b0;
             padding: 0.4rem 1.2rem;
             border-radius: 40px;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            font-size: 0.8rem;
             cursor: pointer;
-            transition: 0.2s;
         }
+        .filter-btn:hover, .filter-btn.active { background: #f1c40f; color: #0a0a0a; }
 
-        .filter-btn:hover, .filter-btn.active {
-            background: #f1c40f;
-            color: #0a0a0a;
-            border-color: #f1c40f;
-        }
+        .main-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .stands-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; }
 
-        .main-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .stands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        /* CARD BASE */
+        /* CARDS */
         .stand-card, .user-card {
             background: linear-gradient(145deg, #111118, #0c0c12);
             border-radius: 28px;
             overflow: hidden;
-            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: 0.3s ease;
             border: 1px solid #2a2a35;
-            position: relative;
             cursor: pointer;
         }
-
-        .stand-card:hover, .user-card:hover {
-            transform: translateY(-5px);
-            border-color: #f1c40f;
-            box-shadow: 0 20px 35px -12px rgba(241,196,15,0.2);
-        }
-
-        .stand-preview, .user-preview {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            padding: 12px;
-        }
-
-        .user-preview {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-        }
-
-        .part-tag {
-            background: #000000aa;
-            backdrop-filter: blur(4px);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: #ffd966;
-            border-left: 2px solid #f1c40f;
-        }
-
-        .act-badge {
-            background: #f1c40faa;
-            backdrop-filter: blur(4px);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: #0a0a0a;
-        }
-
-        .stand-content, .user-content {
-            padding: 1.4rem;
-        }
-
-        .stand-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            font-family: 'Orbitron', monospace;
-            color: #FFE5B4;
-            margin-bottom: 0.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .stand-user {
-            font-size: 0.85rem;
-            color: #b0a07c;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .stand-desc {
-            font-size: 0.85rem;
-            color: #bcb8a8;
-            line-height: 1.4;
-            margin: 0.8rem 0;
-            border-left: 2px solid #f1c40f66;
-            padding-left: 10px;
-            min-height: 65px;
-        }
-
-        .stats-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 12px 0;
-        }
-
-        .stat-chip {
-            background: #1e1b28;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: bold;
-            color: #e6c877;
-        }
-
-        .evo-btn {
-            background: linear-gradient(135deg, #f1c40f22, #f1c40f44);
-            border: 1px solid #f1c40f;
-            color: #f1c40f;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            width: 100%;
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .evo-btn:hover {
-            background: #f1c40f;
-            color: #0a0a0a;
-            transform: scale(1.02);
-        }
-
-        .reset-btn {
-            background: none;
-            border: 1px solid #666;
-            color: #aaa;
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .reset-btn:hover {
-            background: #666;
-            color: #fff;
-        }
-
-        .btn-details {
+        .stand-card:hover, .user-card:hover { transform: translateY(-5px); border-color: #f1c40f; box-shadow: 0 20px 35px -12px rgba(241,196,15,0.2); }
+        .stand-preview, .user-preview { height: 200px; background-size: cover; background-position: center; position: relative; display: flex; align-items: flex-end; justify-content: space-between; padding: 12px; }
+        .part-tag { background: #000000aa; backdrop-filter: blur(4px); padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; color: #ffd966; border-left: 2px solid #f1c40f; }
+        .act-badge { background: #f1c40faa; backdrop-filter: blur(4px); padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; color: #0a0a0a; font-weight: bold; }
+        .fav-badge { background: #e74c3caa; backdrop-filter: blur(4px); padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; color: white; }
+        .stand-content, .user-content { padding: 1.2rem; }
+        .stand-title { font-size: 1.4rem; font-weight: 800; font-family: 'Orbitron', monospace; color: #FFE5B4; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .stand-user { font-size: 0.8rem; color: #b0a07c; margin: 5px 0; }
+        .stand-desc { font-size: 0.8rem; color: #bcb8a8; margin: 10px 0; border-left: 2px solid #f1c40f66; padding-left: 10px; min-height: 60px; }
+        .stats-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+        .stat-chip { background: #1e1b28; padding: 2px 8px; border-radius: 20px; font-size: 0.6rem; color: #e6c877; }
+        .btn-details, .fav-btn, .evo-btn {
             background: none;
             border: 1px solid #f1c40f66;
             color: #f1c40f;
@@ -292,33 +154,19 @@
             border-radius: 30px;
             font-size: 0.7rem;
             cursor: pointer;
-            transition: 0.2s;
             width: 100%;
-            margin-top: 8px;
+            margin-top: 5px;
+            font-weight: bold;
         }
+        .evo-btn { background: #f1c40f22; border-color: #f1c40f; }
+        .evo-btn:hover { background: #f1c40f; color: #0a0a0a; }
+        .fav-btn { border-color: #e74c3c66; color: #e74c3c; }
+        .fav-btn.active { background: #e74c3c; color: white; }
+        .reset-btn { background: none; border: 1px solid #666; color: #aaa; padding: 4px 10px; border-radius: 30px; font-size: 0.65rem; cursor: pointer; }
+        .reset-btn:hover { background: #666; color: #fff; }
 
-        .btn-details:hover {
-            background: #f1c40f22;
-        }
-
-        .user-stand-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 12px;
-        }
-
-        .user-stand-tag {
-            background: #f1c40f22;
-            border: 1px solid #f1c40f66;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            color: #ffd966;
-        }
-
-        /* MODAL */
-        .modal-full {
+        /* MODAIS */
+        .modal-login, .modal-details {
             display: none;
             position: fixed;
             top: 0;
@@ -326,73 +174,81 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.96);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
+            backdrop-filter: blur(15px);
+            z-index: 2000;
             align-items: center;
             justify-content: center;
         }
-
-        .modal-card {
+        .login-container, .details-container {
             background: linear-gradient(145deg, #141420, #0b0b12);
-            max-width: 550px;
+            max-width: 500px;
             width: 90%;
-            border-radius: 48px;
-            border: 1px solid #f1c40f;
+            border-radius: 40px;
+            border: 2px solid #f1c40f;
             padding: 2rem;
             position: relative;
-            animation: fadeSlide 0.25s ease;
+            animation: fadeSlide 0.3s ease;
         }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .login-header { text-align: center; margin-bottom: 1.5rem; }
+        .login-header h2 { font-family: 'Orbitron', monospace; color: #ffd966; font-size: 1.5rem; }
+        .input-group { margin-bottom: 1rem; }
+        .input-group label { display: block; margin-bottom: 0.5rem; color: #ffd966; font-weight: bold; }
+        .input-group input { width: 100%; padding: 10px 15px; background: #1e1b28; border: 1px solid #f1c40f66; border-radius: 30px; color: #fff; }
+        .login-btn-submit { width: 100%; padding: 10px; background: linear-gradient(135deg, #f1c40f, #ffa500); border: none; border-radius: 40px; color: #0a0a0a; font-weight: bold; cursor: pointer; margin-top: 0.5rem; }
+        .switch-auth { text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #aaa; }
+        .switch-auth a { color: #f1c40f; cursor: pointer; }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; color: #f1c40f; cursor: pointer; }
 
-        @keyframes fadeSlide {
-            from { opacity: 0; transform: translateY(20px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 18px;
-            right: 24px;
-            font-size: 32px;
-            color: #f1c40f;
-            cursor: pointer;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.8rem;
-            font-size: 0.75rem;
-            color: #6a6a6a;
-            border-top: 1px solid #f1c40f22;
-            margin-top: 2rem;
-        }
-
+        /* ANIMAÇÃO */
         @keyframes evolvePulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); box-shadow: 0 0 20px #f1c40f; }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 #f1c40f; }
+            50% { transform: scale(1.02); box-shadow: 0 0 20px 10px #f1c40f; }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 #f1c40f; }
         }
+        .evolving { animation: evolvePulse 0.5s ease; }
 
-        .evolving {
-            animation: evolvePulse 0.5s ease;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 3rem;
-            color: #888;
-            font-size: 1.2rem;
-        }
-        
+        footer { text-align: center; padding: 1.5rem; font-size: 0.7rem; color: #6a6a6a; border-top: 1px solid #f1c40f22; margin-top: 2rem; }
+        .no-results { text-align: center; padding: 3rem; color: #888; }
+        .toast { position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; border-radius: 30px; z-index: 3000; animation: fadeSlide 0.3s ease; font-weight: bold; color: white; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1><i class="fas fa-database"></i> JOJO STAND ARCHIVE <i class="fas fa-users"></i></h1>
-    <p>「 50 Stands + Portadores 」— Explore os Stands e seus usuários!</p>
+    <h1><i class="fas fa-database"></i> HEAVEN ASCENSION <i class="fas fa-chart-line"></i></h1>
+    <p>「 50 Stands + Evolução (Atos/Requiem) + Login 」— Evolua seus Stands favoritos!</p>
     <div class="stand-counter" id="totalCounter">⚡ CARREGANDO ⚡</div>
 </div>
 
+<!-- BARRA DO USUÁRIO -->
+<div id="userBar" class="user-bar">
+    <div class="user-info">
+        <div class="welcome-badge"><i class="fas fa-user-friends"></i> Visitante</div>
+    </div>
+    <div>
+        <button class="register-btn" onclick="abrirModalRegister()"><i class="fas fa-user-plus"></i> Cadastrar</button>
+        <button class="login-btn" onclick="abrirModalLogin()"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+    </div>
+</div>
+
+<!-- MODAL DE LOGIN -->
+<div id="loginModal" class="modal-login">
+    <div class="login-container">
+        <div class="close-modal" id="closeLoginModalBtn">&times;</div>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<!-- MODAL DE DETALHES -->
+<div id="detailsModal" class="modal-details">
+    <div class="details-container">
+        <div class="close-modal" id="closeDetailsModalBtn">&times;</div>
+        <div id="detailsContent"></div>
+    </div>
+</div>
+
+<!-- TABS E FILTROS -->
 <div class="tabs-container">
     <div class="tabs">
         <button class="tab-btn active" data-tab="stands"><i class="fas fa-dragon"></i> STANDS</button>
@@ -407,7 +263,8 @@
         <button class="filter-btn" data-part="Parte 7">🐎 PARTE 7</button>
         <button class="filter-btn" data-part="Parte 8">🍎 PARTE 8</button>
         <button class="filter-btn" data-part="Parte 9">🌊 PARTE 9</button>
-        <button class="filter-btn" data-part="Evolutivo">⭐ EVOLUTIVOS</button>
+        <button class="filter-btn" data-part="Especial">⭐ ESPECIAL</button>
+        <button class="filter-btn" data-part="favoritos">❤️ MEUS FAVORITOS</button>
     </div>
 </div>
 
@@ -416,134 +273,186 @@
 </div>
 
 <footer>
-    <i class="fas fa-crown"></i> 50 Stands • 42 Portadores • 8 Stands Evolutivos<br>
-    <span style="font-size: 0.7rem;">"Cada Stand é a manifestação da alma — e cada portador tem sua história"</span>
+    <i class="fas fa-crown"></i> 50 Stands • 48 Portadores • Evolução por Clique • Sistema de Login • Favoritos<br>
+    <span>"Clique em EVOLUIR para ver os Atos e Requiem dos Stands!"</span>
 </footer>
 
-<div id="standModal" class="modal-full">
-    <div class="modal-card">
-        <div class="modal-close" id="closeModalBtn">&times;</div>
-        <div id="modalDynamicContent"></div>
-    </div>
-</div>
-
 <script>
-    // ==================== STANDS NORMAIS (42 Stands) ====================
-    const standsNormais = [
+        // ==================== SISTEMA DE IMAGENS ====================
+    const imagensStands = {
         // Parte 3
-        { id: 1, name: "Star Platinum", user: "Jotaro Kujo", desc: "Força bruta, precisão lendária e parada temporal.", fullDesc: "Star Platinum possui força destrutiva A, reflexos sobre-humanos e o poder de parar o tempo.", stats: ["Força: A", "Velocidade: A", "Alcance: C", "Durabilidade: A"], gradient: "linear-gradient(135deg, #1a2a6c, #b21f1f)", parte: "Parte 3", isEvolutive: true, evolutionId: "starPlatinum" },
-        { id: 2, name: "The World", user: "Dio Brando", desc: "Para o tempo por até 9 segundos.", fullDesc: "The World tem força física opressora e a habilidade de parar o fluxo do tempo globalmente.", stats: ["Força: A", "Velocidade: A", "Alcance: C", "Durabilidade: A"], gradient: "linear-gradient(135deg, #25202b, #7d5d1a)", parte: "Parte 3", isEvolutive: true, evolutionId: "theWorld" },
-        { id: 3, name: "Hermit Purple", user: "Joseph Joestar", desc: "Videiras que canalizam hamon e clarividência.", fullDesc: "Gera espinhos de videira para atacar e escalar. Pode destruir câmeras para gerar fotos psíquicas.", stats: ["Força: D", "Velocidade: C", "Alcance: B", "Utilidade: A"], gradient: "linear-gradient(135deg, #2e5c3e, #6b8e23)", parte: "Parte 3" },
-        { id: 4, name: "Magician's Red", user: "Mohammed Avdol", desc: "Manipula fogo com 'Cross Fire Hurricane'.", fullDesc: "Gera chamas intensas, detecta calor corporal e cria armadilhas de fogo.", stats: ["Força: B", "Velocidade: B", "Alcance: C", "Poder: A"], gradient: "linear-gradient(135deg, #dc143c, #ff6347)", parte: "Parte 3" },
-        { id: 5, name: "Silver Chariot", user: "Jean Pierre Polnareff", desc: "Espadachim veloz, pode remover armadura.", fullDesc: "Usa uma rapieira com precisão sobre-humana. Pode disparar lâminas.", stats: ["Força: A", "Velocidade: A", "Alcance: C", "Precisão: B"], gradient: "linear-gradient(135deg, #1e1e2f, #bdc3c7)", parte: "Parte 3", isEvolutive: true, evolutionId: "silverChariot" },
-        { id: 6, name: "Hierophant Green", user: "Noriaki Kakyoin", desc: "Controla marionetes e atira esmeraldas.", fullDesc: "Stand de alcance longo que pode se esticar e controlar corpos.", stats: ["Força: C", "Velocidade: B", "Alcance: B", "Precisão: C"], gradient: "linear-gradient(135deg, #006400, #32cd32)", parte: "Parte 3" },
-        { id: 7, name: "Cream", user: "Vanilla Ice", desc: "Apaga o espaço, tornando-se um vórtice.", fullDesc: "Cream pode apagar completamente o espaço ao se transformar em uma esfera.", stats: ["Força: B", "Velocidade: B", "Alcance: D", "Letalidade: A"], gradient: "linear-gradient(135deg, #1a1a1a, #3d3d3d)", parte: "Parte 3" },
-        { id: 8, name: "Justice", user: "Enya the Hag", desc: "Controla corpos com ferimentos através da névoa.", fullDesc: "Stand de névoa que controla qualquer pessoa com um corte.", stats: ["Força: D", "Velocidade: C", "Alcance: A", "Controle: A"], gradient: "linear-gradient(135deg, #4a4a4a, #8a8a8a)", parte: "Parte 3" },
-        
+        "Star Platinum": "imagens/star platinum.jpg",
+        "The World": "imagens/the world.jpg",
+        "Hermit Purple": "imagens/hermet purple.jpg",
+        "Magician's Red": "imagens/magician red.jpg",
+        "Silver Chariot": "imagens/silver chariot.jpg",
+        "Hierophant Green": "imagens/hierophant green.jpg",
+        "Cream": "imagens/cream.jpg",
+        "Justice": "imagens/justice.jpg",
         // Parte 4
-        { id: 9, name: "Crazy Diamond", user: "Josuke Higashikata", desc: "Restaura objetos ao estado anterior, cura.", fullDesc: "Pode restaurar qualquer coisa quebrada. Grito 'DORARARARA'.", stats: ["Força: A", "Velocidade: A", "Alcance: D", "Utilidade: S"], gradient: "linear-gradient(135deg, #182848, #4b6cb7)", parte: "Parte 4" },
-        { id: 10, name: "Killer Queen", user: "Yoshikage Kira", desc: "Transforma objetos em bombas.", fullDesc: "Transforma objetos em bombas. Sheer Heart Attack e Bites the Dust.", stats: ["Força: A", "Velocidade: B", "Alcance: D", "Letalidade: S"], gradient: "linear-gradient(135deg, #2b2d42, #e63946)", parte: "Parte 4", isEvolutive: true, evolutionId: "killerQueen" },
-        { id: 11, name: "Heaven's Door", user: "Rohan Kishibe", desc: "Transforma pessoas em livros, escreve ordens.", fullDesc: "Rohan pode impor ordens que não podem ser quebradas.", stats: ["Controle: S", "Velocidade: B", "Alcance: B", "Potencial: A"], gradient: "linear-gradient(135deg, #1a2a3a, #d364f0)", parte: "Parte 4" },
-        { id: 12, name: "Echoes", user: "Koichi Hirose", desc: "Evolui em 3 atos: sons, efeitos físicos e peso.", fullDesc: "Stand evolutivo com três formas distintas.", stats: ["Versatilidade: A", "Potencial: S", "Crescimento: S"], gradient: "linear-gradient(135deg, #228b22, #adff2f)", parte: "Parte 4", isEvolutive: true, evolutionId: "echoes" },
-        { id: 13, name: "The Hand", user: "Okuyasu Nijimura", desc: "Apaga espaço e matéria.", fullDesc: "Pode apagar qualquer coisa para aproximar objetos.", stats: ["Força: B", "Velocidade: B", "Alcance: D", "Potencial: S"], gradient: "linear-gradient(135deg, #2c3e50, #5d6d7e)", parte: "Parte 4" },
-        { id: 14, name: "Aqua Necklace", user: "Anjuro Katagiri", desc: "Ser líquido que se infiltra.", fullDesc: "Stand líquido que pode se infiltrar em qualquer lugar.", stats: ["Infiltração: A", "Velocidade: B", "Alcance: B"], gradient: "linear-gradient(135deg, #008080, #20b2aa)", parte: "Parte 4" },
-        { id: 15, name: "Bad Company", user: "Keicho Nijimura", desc: "Exército em miniatura.", fullDesc: "Soldados, tanques e helicópteros em miniatura.", stats: ["Poder: B", "Alcance: C", "Versatilidade: A"], gradient: "linear-gradient(135deg, #2e4a2e, #4c8b4c)", parte: "Parte 4" },
-        { id: 16, name: "Red Hot Chili Pepper", user: "Akira Otoishi", desc: "Stand elétrico que viaja por condutores.", fullDesc: "Quanto mais eletricidade, mais forte.", stats: ["Velocidade: A", "Força: A", "Alcance: A"], gradient: "linear-gradient(135deg, #ff6347, #ffa500)", parte: "Parte 4" },
-        { id: 17, name: "Enigma", user: "Terunosuke Miyamoto", desc: "Prende pessoas/papéis manifestando medo.", fullDesc: "Transforma hábitos de medo em papel.", stats: ["Controle: B", "Alcance: C", "Estratégia: B"], gradient: "linear-gradient(135deg, #663399, #9370db)", parte: "Parte 4" },
-        
+        "Crazy Diamond": "imagens/crazy diamond.jpg",
+        "Killer Queen": "imagens/killer queen.jpg",
+        "Heaven's Door": "imagens/heavens door.jpg",
+        "Echoes": "imagens/echoes.jpg",
+        "The Hand": "imagens/the hand.jpg",
+        "Aqua Necklace": "imagens/aqua necklace.jpg",
+        "Bad Company": "imagens/bad company.jpg",
+        "Red Hot Chili Pepper": "imagens/rhcp.jpg",
+        "Enigma": "imagens/enigma.jpg",
         // Parte 5
-        { id: 18, name: "Gold Experience", user: "Giorno Giovanna", desc: "Dá vida a objetos, reflexo de dano.", fullDesc: "Cria seres vivos a partir de objetos inanimados.", stats: ["Destruição: C", "Velocidade: A", "Alcance: C", "Potencial: A"], gradient: "linear-gradient(135deg, #ffd700, #ffaa00)", parte: "Parte 5", isEvolutive: true, evolutionId: "goldExperience" },
-        { id: 19, name: "Sticky Fingers", user: "Bruno Bucciarati", desc: "Cria zíperes em qualquer superfície.", fullDesc: "Zíperes para separar membros, criar bolsas e passagens.", stats: ["Força: A", "Velocidade: A", "Alcance: C", "Versatilidade: A"], gradient: "linear-gradient(135deg, #2c3e50, #9b59b6)", parte: "Parte 5" },
-        { id: 20, name: "Aerosmith", user: "Narancia Ghirga", desc: "Avião armado com radar de CO₂.", fullDesc: "Ataques aéreos. Radar detecta respiração.", stats: ["Alcance: B", "Poder: B", "Radar: S"], gradient: "linear-gradient(135deg, #4682b4, #b0e0e6)", parte: "Parte 5" },
-        { id: 21, name: "Sex Pistols", user: "Guido Mista", desc: "Seis seres que guiam balas.", fullDesc: "Controlam trajetória, ricocheteiam balas.", stats: ["Precisão: S", "Velocidade: B", "Estratégia: A"], gradient: "linear-gradient(135deg, #800000, #f08080)", parte: "Parte 5" },
-        { id: 22, name: "King Crimson", user: "Diavolo", desc: "Apaga o tempo e prevê o futuro.", fullDesc: "Salta um intervalo temporal; ninguém lembra o que aconteceu.", stats: ["Poder: S", "Velocidade: A", "Epitáfio: S"], gradient: "linear-gradient(135deg, #8b0000, #ff6347)", parte: "Parte 5" },
-        { id: 23, name: "Moody Blues", user: "Leone Abbacchio", desc: "Repete eventos passados.", fullDesc: "Reproduz fielmente o que ocorreu no local.", stats: ["Investigação: S", "Utilidade: A", "Precisão: S"], gradient: "linear-gradient(135deg, #4a148c, #9c27b0)", parte: "Parte 5" },
-        { id: 24, name: "Purple Haze", user: "Pannacotta Fugo", desc: "Vírus mortal que destrói carne.", fullDesc: "Cápsulas com vírus letal.", stats: ["Letalidade: S", "Alcance: C", "Risco: Alto"], gradient: "linear-gradient(135deg, #4b0082, #8a2be2)", parte: "Parte 5" },
-        { id: 25, name: "Spice Girl", user: "Trish Una", desc: "Amolece objetos e aumenta elasticidade.", fullDesc: "Deixa superfícies macias como borracha.", stats: ["Defesa: A", "Versatilidade: B", "Utilidade: A"], gradient: "linear-gradient(135deg, #ff69b4, #db7093)", parte: "Parte 5" },
-        { id: 26, name: "Metallica", user: "Risotto Nero", desc: "Controla ferro no sangue.", fullDesc: "Manipulação letal de ferro: cria lâminas internas.", stats: ["Ofensiva: S", "Furtividade: S", "Controle: A"], gradient: "linear-gradient(135deg, #708090, #c0c0c0)", parte: "Parte 5" },
-        { id: 27, name: "Clash", user: "Squalo", desc: "Teleporte entre líquidos.", fullDesc: "Ataca como um tubarão miniatura.", stats: ["Velocidade: S", "Imprevisível: S", "Alcance: A"], gradient: "linear-gradient(135deg, #2f4f4f, #20b2aa)", parte: "Parte 5" },
-        
+        "Gold Experience": "imagens/gold experience.jpg",
+        "Sticky Fingers": "imagens/sticky fingers.jpg",
+        "Aerosmith": "imagens/aero smith.jpg",
+        "Sex Pistols": "imagens/sex pistol.jpg",
+        "King Crimson": "imagens/king crimson.jpg",
+        "Moody Blues": "imagens/moody blues.jpg",
+        "Purple Haze": "imagens/purple haze.jpg",
+        "Spice Girl": "imagens/spice girl.jpg",
+        "Metallica": "imagens/metallica.jpg",
+        "Clash": "imagens/clash.jpg",
         // Parte 6
-        { id: 28, name: "Stone Free", user: "Jolyne Cujoh", desc: "Desfia corpo em cordas.", fullDesc: "Transforma o corpo em cordas vivas.", stats: ["Versatilidade: S", "Resistência: A", "Criatividade: A"], gradient: "linear-gradient(135deg, #1a5276, #5dade2)", parte: "Parte 6" },
-        { id: 29, name: "Whitesnake", user: "Enrico Pucci", desc: "Rouba discos de memória.", fullDesc: "Extrai discos com memórias e Stands.", stats: ["Controle: S", "Furtividade: A", "Hax: S"], gradient: "linear-gradient(135deg, #2c2c2c, #bb8fce)", parte: "Parte 6", isEvolutive: true, evolutionId: "whitesnake" },
-        { id: 30, name: "Weather Report", user: "Weather Report", desc: "Manipula clima.", fullDesc: "Controla clima, chuva ácida, relâmpagos.", stats: ["Destruição: A", "Alcance: A", "Versatilidade: S"], gradient: "linear-gradient(135deg, #0277bd, #29b6f6)", parte: "Parte 6" },
-        { id: 31, name: "Kiss", user: "Ermes Costello", desc: "Cria cópias com adesivos.", fullDesc: "Adesivos que duplicam objetos.", stats: ["Dano: A", "Estratégia: B", "Utilidade: A"], gradient: "linear-gradient(135deg, #ff69b4, #c71585)", parte: "Parte 6" },
-        { id: 32, name: "Diver Down", user: "Narciso Anasui", desc: "Mergulha dentro de objetos.", fullDesc: "Pode se esconder dentro de superfícies.", stats: ["Defesa: A", "Infiltração: S", "Versatilidade: B"], gradient: "linear-gradient(135deg, #006994, #00ced1)", parte: "Parte 6" },
-        
+        "Stone Free": "imagens/stone free.jpg",
+        "Whitesnake": "imagens/white snake.jpg",
+        "Weather Report": "imagens/weather report.jpg",
+        "Kiss": "imagens/kiss.jpg",
+        "Diver Down": "imagens/diver down.jpg",
         // Parte 7
-        { id: 33, name: "Tusk", user: "Johnny Joestar", desc: "Rotação infinita (ACT1 a ACT4).", fullDesc: "ACT4 possui rotação infinita que perfura qualquer defesa.", stats: ["Poder: S+", "Potencial: S", "Rotação: Infinita"], gradient: "linear-gradient(135deg, #003300, #32cd32)", parte: "Parte 7", isEvolutive: true, evolutionId: "tusk" },
-        { id: 34, name: "D4C", user: "Funny Valentine", desc: "Salta entre dimensões.", fullDesc: "Love Train: redireciona calamidades.", stats: ["Dimensional: S", "Imortalidade: S", "Alcance: A"], gradient: "linear-gradient(135deg, #4a0000, #dc143c)", parte: "Parte 7" },
-        { id: 35, name: "Scary Monsters", user: "Diego Brando", desc: "Transforma em dinossauros.", fullDesc: "Infecção fóssil: controle sobre dinossauros.", stats: ["Controle: A", "Força: B", "Transformação: A"], gradient: "linear-gradient(135deg, #4a3b2c, #b8860b)", parte: "Parte 7" },
-        { id: 36, name: "Ball Breaker", user: "Gyro Zeppeli", desc: "Rotação superdimensional.", fullDesc: "Ataque que envelhece o alvo instantaneamente.", stats: ["Envelhecimento: S", "Poder: A", "Único: S"], gradient: "linear-gradient(135deg, #b8860b, #ffd700)", parte: "Parte 7" },
-        { id: 37, name: "Catch the Rainbow", user: "Blackmore", desc: "Manipula gotas de chuva.", fullDesc: "Anda sobre gotas e as usa como armas.", stats: ["Clima: A", "Agilidade: A", "Condição: Chuva"], gradient: "linear-gradient(135deg, #2c3e50, #a0c0e0)", parte: "Parte 7" },
-        { id: 38, name: "In a Silent Way", user: "Sandman", desc: "Transforma sons em objetos.", fullDesc: "Pega sons e os materializa como armas.", stats: ["Criatividade: S", "Versatilidade: A", "Potencial: B"], gradient: "linear-gradient(135deg, #5d3a1a, #b87c4f)", parte: "Parte 7" },
-        
+        "Tusk": "imagens/tusk.jpg",
+        "D4C": "imagens/d4c.jpg",
+        "Scary Monsters": "imagens/scary monsters.jpg",
+        "Ball Breaker": "imagens/ball breaker.jpg",
+        "Catch the Rainbow": "imagens/catch the rainbow.jpg",
+        "In a Silent Way": "imagens/in a silent way.jpg",
         // Parte 8
-        { id: 39, name: "Soft & Wet", user: "Josuke Higashikata (Parte 8)", desc: "Rouba propriedades com bolhas.", fullDesc: "Bolhas removem características como visão, som.", stats: ["Plunder: S", "Versatilidade: S", "Criatividade: S+"], gradient: "linear-gradient(135deg, #0b4f6c, #d6f2ff)", parte: "Parte 8" },
-        { id: 40, name: "Wonder of U", user: "Tooru", desc: "Calamidade a quem persegue.", fullDesc: "Stand autônomo — qualquer intenção de perseguição causa acidentes.", stats: ["Calamidade: S++", "Alcance: Global", "Defesa: Absoluta"], gradient: "linear-gradient(135deg, #1a1a2e, #0f3460)", parte: "Parte 8" },
-        { id: 41, name: "Paisley Park", user: "Yasuho Hirose", desc: "Guia para soluções.", fullDesc: "Navegação, mostrar rotas, revelar segredos.", stats: ["Utilidade: S", "Alcance: A", "Informação: S"], gradient: "linear-gradient(135deg, #ff6b6b, #e74c3c)", parte: "Parte 8" },
-        { id: 42, name: "Nut King Call", user: "Joshu Higashikata", desc: "Desparafusa partes do corpo.", fullDesc: "Cria parafusos que separam membros.", stats: ["Desmontagem: B", "Controle: B", "Alcance: C"], gradient: "linear-gradient(135deg, #a0522d, #cd853f)", parte: "Parte 8" },
-        { id: 43, name: "Doggy Style", user: "Daiya Higashikata", desc: "Transforma corpo em fios.", fullDesc: "Cordas tipo cabo de aço.", stats: ["Flexibilidade: A", "Controle: B", "Resistência: B"], gradient: "linear-gradient(135deg, #cd853f, #f4a460)", parte: "Parte 8" },
-        
+        "Soft & Wet": "imagens/soft and wet.jpg",
+        "Wonder of U": "imagens/wonder of u.jpg",
+        "Paisley Park": "imagens/paisley park.jpg",
+        "Nut King Call": "imagens/nut king call.jpg",
+        "Doggy Style": "imagens/doggy style.jpg",
         // Parte 9
-        { id: 44, name: "November Rain", user: "Jodio Joestar", desc: "Chuva esmagadora.", fullDesc: "Gotas densas que pressionam adversários.", stats: ["Poder: B", "Alcance: C", "Pressão: A"], gradient: "linear-gradient(135deg, #0a2f6c, #3b82f6)", parte: "Parte 9" },
-        { id: 45, name: "Smooth Operators", user: "Dragona Joestar", desc: "Manipula objetos à distância.", fullDesc: "Move partes do ambiente.", stats: ["Telecinese: B", "Versatilidade: A", "Precisão: B"], gradient: "linear-gradient(135deg, #9b59b6, #e67e22)", parte: "Parte 9" },
-        { id: 46, name: "The Hustle", user: "Paco Laburantes", desc: "Aumenta tensão muscular.", fullDesc: "Explosão de força em pontos específicos.", stats: ["Força: B", "Velocidade: C", "Potencial: B"], gradient: "linear-gradient(135deg, #f39c12, #e67e22)", parte: "Parte 9" },
-        
+        "November Rain": "imagens/november rain.jpg",
+        "Smooth Operators": "imagens/smooth operators.jpg",
+        "The Hustle": "imagens/the hustle.jpg",
         // Especiais
-        { id: 47, name: "Anubis", user: "Espada Amaldiçoada", desc: "Stand espada que controla o portador.", fullDesc: "Cada golpe fica mais rápido.", stats: ["Velocidade: A", "Controle: A", "Letalidade: B"], gradient: "linear-gradient(135deg, #2c2c2c, #5a2e2e)", parte: "Especial" },
-        { id: 48, name: "Super Fly", user: "Toyohiro Kanedaichi", desc: "Torre elétrica que aprisiona.", fullDesc: "Quem entra não pode sair sozinho.", stats: ["Aprisionamento: A", "Reflexo: A", "Defesa: B"], gradient: "linear-gradient(135deg, #4a4a4a, #8a8a8a)", parte: "Especial" },
-        { id: 49, name: "Made in Heaven", user: "Enrico Pucci", desc: "Acelera o tempo até resetar o universo.", fullDesc: "Velocidade exponencial recriando o universo.", stats: ["Velocidade: ∞", "Poder: S+", "Reset: Único"], gradient: "linear-gradient(135deg, #0a0f1a, #a8c0ff)", parte: "Parte 6" },
-        { id: 50, name: "C-Moon", user: "Enrico Pucci", desc: "Inverte a gravidade.", fullDesc: "Toca o chão e você cai para o céu.", stats: ["Gravidade: S", "Letalidade: A", "Alcance: A"], gradient: "linear-gradient(135deg, #1a237e, #3f51b5)", parte: "Parte 6" }
-    ];
+        "Anubis": "imagens/anubis.jpg",
+        "Super Fly": "imagens/super fly.jpg"
+    };
+    
+     const imagensEvolutivas = {
+        // Star Platinum
+        "Star Platinum The World": "imagens/star platinum the world.jpg",
+        
+        // The World
+        "The World (9 segundos)": "imagens/the world 9s.jpg",
+        
+        // Gold Experience
+        "Gold Experience Requiem": "imagens/gold experience requiem.jpg",
+        
+        // Killer Queen
+        "Killer Queen + Sheer Heart Attack": "imagens/killer queen sheer.jpg",
+        "Killer Queen: Bites the Dust": "imagens/killer queen bites.jpg",
+        
+        // Echoes
+        "Echoes ACT1": "imagens/echoes act1.jpg",
+        "Echoes ACT2": "imagens/echoes act2.jpg",
+        "Echoes ACT3": "imagens/echoes act3.jpg",
+        
+        // Tusk
+        "Tusk ACT1": "imagens/tusk act1.jpg",
+        "Tusk ACT2": "imagens/tusk act2.jpg",
+        "Tusk ACT3": "imagens/tusk act3.jpg",
+        "Tusk ACT4": "imagens/tusk act4.jpg",
+        
+        // Silver Chariot
+        "Silver Chariot Requiem": "imagens/silver chariot requiem.jpg",
+        
+        // Whitesnake (evoluções)
+        "C-Moon": "imagens/cmoon.jpg",
+        "Made in Heaven": "imagens/made in heaven.jpg"
+    };
 
-    // ==================== LISTA DE PORTADORES (USUÁRIOS) ====================
-    const portadores = [];
-    const usuariosMap = new Map();
+    const imagensPortadores = {
+        "Jotaro Kujo": "imagens2/jotaro-kujo.jfif",
+        "Dio Brando": "imagens2/dio-brando.jpg",
+        "Joseph Joestar": "imagens2/joseph-joestar.jpg",
+        "Mohammed Avdol": "imagens2/avdol.jpg",
+        "Jean Pierre Polnareff": "imagens2/polnareff.jpg",
+        "Noriaki Kakyoin": "imagens2/kakyoin.jpg",
+        "Vanilla Ice": "imagens2/vanilla-ice.jpg",
+        "Enya the Hag": "imagens2/enya.jpg",
+        "Josuke Higashikata": "imagens2/josuke.jpg",
+        "Yoshikage Kira": "imagens2/kira.jpg",
+        "Rohan Kishibe": "imagens2/rohan.jpg",
+        "Koichi Hirose": "imagens2/koichi.jpg",
+        "Okuyasu Nijimura": "imagens2/okuyasu.jpg",
+        "Anjuro Katagiri": "imagens2/anjuro.jpg",
+        "Keicho Nijimura": "imagens2/keicho.jpg",
+        "Akira Otoishi": "imagens2/akira.jpg",
+        "Terunosuke Miyamoto": "imagens2/terunosuke.jpg",
+        "Giorno Giovanna": "imagens2/giorno.jpg",
+        "Bruno Bucciarati": "imagens2/bucciarati.jpg",
+        "Narancia Ghirga": "imagens2/narancia.jpg",
+        "Guido Mista": "imagens2/mista.jpg",
+        "Diavolo": "imagens2/diavolo.jpg",
+        "Leone Abbacchio": "imagens2/abbacchio.jpg",
+        "Pannacotta Fugo": "imagens2/fugo.jpg",
+        "Trish Una": "imagens2/trish.jpg",
+        "Risotto Nero": "imagens2/risotto.jpg",
+        "Squalo": "imagens2/squalo.jpg",
+        "Jolyne Cujoh": "imagens2/jolyne.jpg",
+        "Enrico Pucci": "imagens2/pucci.jpg",
+        "Weather Report": "imagens2/weather.jpg",
+        "Ermes Costello": "imagens2/ermes.jpg",
+        "Narciso Anasui": "imagens2/anasui.jpg",
+        "Johnny Joestar": "imagens2/johnny.jpg",
+        "Funny Valentine": "imagens2/valentine.jpg",
+        "Diego Brando": "imagens2/diego.jpg",
+        "Gyro Zeppeli": "imagens2/gyro.jpg",
+        "Blackmore": "imagens2/blackmore.jpg",
+        "Sandman": "imagens2/sandman.jpg",
+        "Josuke (Parte 8)": "imagens2/josuke8.jpg",
+        "Tooru": "imagens2/tooru.jpg",
+        "Yasuho Hirose": "imagens2/yasuho.jpg",
+        "Joshu Higashikata": "imagens2/joshu.jpg",
+        "Daiya Higashikata": "imagens2/daiya.jpg",
+        "Jodio Joestar": "imagens2/jodio.jpg",
+        "Dragona Joestar": "imagens2/dragona.jpg",
+        "Paco Laburantes": "imagens2/paco.jpg",
+        "Espada Amaldiçoada": "imagens2/anubis.jpg",
+        "Toyohiro Kanedaichi": "imagens2/toyohiro.jpg"
+    };
 
-    // Agrupar Stands por usuário
-    standsNormais.forEach(stand => {
-        if (!usuariosMap.has(stand.user)) {
-            usuariosMap.set(stand.user, {
-                nome: stand.user,
-                stands: [],
-                parte: stand.parte
-            });
+   // Função para obter imagem do Stand (incluindo formas evolutivas)
+    function getImagemStand(nomeStand, nomeFormaAtual) {
+        // Primeiro verifica se é uma forma evolutiva
+        if (nomeFormaAtual && imagensEvolutivas[nomeFormaAtual]) {
+            return `url('${imagensEvolutivas[nomeFormaAtual]}')`;
         }
-        usuariosMap.get(stand.user).stands.push(stand.name);
-    });
+        // Depois verifica o Stand normal
+        if (imagensStands[nomeStand]) {
+            return `url('${imagensStands[nomeStand]}')`;
+        }
+        return null;
+    }
 
-    // Converter para array
-    usuariosMap.forEach((value, key) => {
-        portadores.push({
-            id: portadores.length + 1,
-            nome: key,
-            quantidadeStands: value.stands.length,
-            stands: value.stands,
-            parte: value.parte,
-            desc: `Portador de ${value.stands.length} Stand(s) da ${value.parte}.`
-        });
-    });
+    // FUNÇÃO CORRIGIDA para imagens dos Portadores
+    function getImagemPortador(nomePortador) {
+        if (imagensPortadores[nomePortador]) {
+            return `url('${imagensPortadores[nomePortador]}')`;
+        }
+        return null;
+    }
 
-    // Ordenar por nome
-    portadores.sort((a, b) => a.nome.localeCompare(b.nome));
-
-    // ==================== STANDS EVOLUTIVOS ====================
-    const evolutiveData = {
+    // ==================== DADOS DE EVOLUÇÃO ====================
+    const evolutionData = {
         echoes: {
-            name: "Echoes",
-            user: "Koichi Hirose",
-            parte: "Parte 4",
             forms: [
                 { name: "Echoes ACT1", desc: "Materializa onomatopeias que afetam o inimigo. Sons pesados e lentos.", stats: ["Destruição: E", "Velocidade: C", "Alcance: B", "Potencial: A"], gradient: "linear-gradient(135deg, #1a5f2a, #4caf50)" },
-                { name: "Echoes ACT2", desc: "As onomatopeias ganham propriedades físicas reais! 'Sizzle' queima, 'Boing' pula.", stats: ["Destruição: D", "Velocidade: B", "Alcance: B", "Potencial: A"], gradient: "linear-gradient(135deg, #2e8b57, #7cfc00)" },
-                { name: "Echoes ACT3", desc: "Manipula o peso com 'S-H-I-T'! Grita FREEZE para imobilizar inimigos.", stats: ["Destruição: C", "Velocidade: B", "Alcance: C", "Potencial: S"], gradient: "linear-gradient(135deg, #006400, #98fb98)" }
+                { name: "Echoes ACT2", desc: "As onomatopeias ganham propriedades físicas reais! 'Sizzle' queima.", stats: ["Destruição: D", "Velocidade: B", "Alcance: B", "Potencial: A"], gradient: "linear-gradient(135deg, #2e8b57, #7cfc00)" },
+                { name: "Echoes ACT3", desc: "Manipula o peso com 'S-H-I-T'! Grita FREEZE para imobilizar.", stats: ["Destruição: C", "Velocidade: B", "Alcance: C", "Potencial: S"], gradient: "linear-gradient(135deg, #006400, #98fb98)" }
             ]
         },
         tusk: {
-            name: "Tusk",
-            user: "Johnny Joestar",
-            parte: "Parte 7",
             forms: [
                 { name: "Tusk ACT1", desc: "Dispara as unhas com rotação básica.", stats: ["Destruição: D", "Velocidade: C", "Alcance: C", "Potencial: A"], gradient: "linear-gradient(135deg, #1a3a1a, #2e7d32)" },
                 { name: "Tusk ACT2", desc: "Segue o alvo mesmo após desviar. As unhas agora tem homing!", stats: ["Destruição: C", "Velocidade: B", "Alcance: C", "Potencial: A"], gradient: "linear-gradient(135deg, #2e5c2e, #4caf50)" },
@@ -552,18 +461,12 @@
             ]
         },
         goldExperience: {
-            name: "Gold Experience",
-            user: "Giorno Giovanna",
-            parte: "Parte 5",
             forms: [
                 { name: "Gold Experience", desc: "Dá vida a objetos inanimados, criando seres vivos. Reflexo de dano.", stats: ["Destruição: C", "Velocidade: A", "Alcance: C", "Potencial: A"], gradient: "linear-gradient(135deg, #ffd700, #ffaa00)" },
                 { name: "Gold Experience Requiem", desc: "ANULA A VERDADE! Retorna qualquer ação ao zero. Impossível de derrotar.", stats: ["Destruição: ?", "Velocidade: ?", "Alcance: ?", "Potencial: ∞"], gradient: "linear-gradient(135deg, #ff6600, #ffcc00)" }
             ]
         },
         killerQueen: {
-            name: "Killer Queen",
-            user: "Yoshikage Kira",
-            parte: "Parte 4",
             forms: [
                 { name: "Killer Queen", desc: "Transforma qualquer objeto tocado em bomba.", stats: ["Destruição: A", "Velocidade: B", "Alcance: D", "Potencial: A"], gradient: "linear-gradient(135deg, #2b2d42, #e63946)" },
                 { name: "Killer Queen + Sheer Heart Attack", desc: "Bomba autônoma guiada por calor, indestrutível.", stats: ["Destruição: A", "Velocidade: B", "Alcance: B", "Potencial: A"], gradient: "linear-gradient(135deg, #4a2b2b, #dc143c)" },
@@ -571,18 +474,12 @@
             ]
         },
         silverChariot: {
-            name: "Silver Chariot",
-            user: "Jean Pierre Polnareff",
-            parte: "Parte 3",
             forms: [
                 { name: "Silver Chariot", desc: "Espadachim veloz com rapieira. Pode remover a armadura.", stats: ["Destruição: A", "Velocidade: A", "Alcance: C", "Potencial: C"], gradient: "linear-gradient(135deg, #1e1e2f, #bdc3c7)" },
                 { name: "Silver Chariot Requiem", desc: "Troca almas entre corpos! Controla sombras e causa sono profundo.", stats: ["Destruição: ?", "Velocidade: ?", "Alcance: Global", "Potencial: S"], gradient: "linear-gradient(135deg, #4a148c, #9c27b0)" }
             ]
         },
         whitesnake: {
-            name: "Whitesnake",
-            user: "Enrico Pucci",
-            parte: "Parte 6",
             forms: [
                 { name: "Whitesnake", desc: "Rouba discos de Stand e memórias. Cria ilusões ácidas.", stats: ["Destruição: C", "Velocidade: C", "Alcance: D", "Potencial: A"], gradient: "linear-gradient(135deg, #2c2c2c, #6c3483)" },
                 { name: "C-Moon", desc: "Inverte a gravidade local. Toca o chão e você cai para o céu!", stats: ["Destruição: B", "Velocidade: B", "Alcance: A", "Potencial: S"], gradient: "linear-gradient(135deg, #1a237e, #3f51b5)" },
@@ -590,18 +487,12 @@
             ]
         },
         starPlatinum: {
-            name: "Star Platinum",
-            user: "Jotaro Kujo",
-            parte: "Parte 3",
             forms: [
                 { name: "Star Platinum", desc: "Força bruta, precisão lendária. ORA ORA ORA!", stats: ["Destruição: A", "Velocidade: A", "Alcance: C", "Potencial: A"], gradient: "linear-gradient(135deg, #1a2a6c, #b21f1f)" },
                 { name: "Star Platinum: The World", desc: "APRENDEU A PARAR O TEMPO! Até 5 segundos.", stats: ["Destruição: A", "Velocidade: A", "Alcance: C", "Potencial: S"], gradient: "linear-gradient(135deg, #0b2f6c, #fdbb4d)" }
             ]
         },
         theWorld: {
-            name: "The World",
-            user: "Dio Brando",
-            parte: "Parte 3",
             forms: [
                 { name: "The World", desc: "Para o tempo por até 5 segundos inicialmente.", stats: ["Destruição: A", "Velocidade: A", "Alcance: C", "Potencial: A"], gradient: "linear-gradient(135deg, #25202b, #7d5d1a)" },
                 { name: "The World (9 segundos)", desc: "Com sangue Joestar, DIO atinge 9 segundos de parada temporal!", stats: ["Destruição: A", "Velocidade: A", "Alcance: C", "Potencial: S"], gradient: "linear-gradient(135deg, #3d2a1a, #be9e44)" }
@@ -609,26 +500,31 @@
         }
     };
 
-    // Estado
-    let evolutionState = {};
-    let activeFilter = "all";
-    let activeTab = "stands";
+    const evolutiveIds = {
+        "Echoes": "echoes",
+        "Tusk": "tusk",
+        "Gold Experience": "goldExperience",
+        "Killer Queen": "killerQueen",
+        "Silver Chariot": "silverChariot",
+        "Whitesnake": "whitesnake",
+        "Star Platinum": "starPlatinum",
+        "The World": "theWorld"
+    };
 
-    // Inicializar estados
+    let evolutionState = {};
+
     function initEvolutionState() {
-        for (let key in evolutiveData) {
+        for (let key in evolutionData) {
             evolutionState[key] = 0;
         }
     }
 
-    // Evoluir Stand
     function evolveStand(evolutionId, event) {
         if (event) event.stopPropagation();
-        const data = evolutiveData[evolutionId];
-        if (!data) return;
+        if (!evolutionData[evolutionId]) return;
         
         const current = evolutionState[evolutionId];
-        const next = (current + 1) % data.forms.length;
+        const next = (current + 1) % evolutionData[evolutionId].forms.length;
         evolutionState[evolutionId] = next;
         
         const card = document.querySelector(`.stand-card[data-evo='${evolutionId}']`);
@@ -637,22 +533,22 @@
             setTimeout(() => card.classList.remove('evolving'), 500);
         }
         
-        renderStands();
+        renderizarConteudo();
     }
 
     function resetStand(evolutionId, event) {
         if (event) event.stopPropagation();
         evolutionState[evolutionId] = 0;
-        renderStands();
+        renderizarConteudo();
     }
 
     function getEvolutiveDisplay(stand) {
-        if (stand.isEvolutive && stand.evolutionId && evolutiveData[stand.evolutionId]) {
-            const evo = evolutiveData[stand.evolutionId];
-            const currentFormIndex = evolutionState[stand.evolutionId] || 0;
-            const currentForm = evo.forms[currentFormIndex];
-            const nextFormName = evo.forms[(currentFormIndex + 1) % evo.forms.length].name;
-            const isMaxForm = currentFormIndex === evo.forms.length - 1;
+        const evoId = evolutiveIds[stand.name];
+        if (evoId && evolutionData[evoId]) {
+            const currentFormIndex = evolutionState[evoId] || 0;
+            const currentForm = evolutionData[evoId].forms[currentFormIndex];
+            const nextFormName = evolutionData[evoId].forms[(currentFormIndex + 1) % evolutionData[evoId].forms.length].name;
+            const isMaxForm = currentFormIndex === evolutionData[evoId].forms.length - 1;
             
             return {
                 isEvolutive: true,
@@ -662,9 +558,9 @@
                 displayGradient: currentForm.gradient,
                 nextFormName: nextFormName,
                 isMaxForm: isMaxForm,
-                evolutionId: stand.evolutionId,
+                evolutionId: evoId,
                 currentFormIndex: currentFormIndex,
-                totalForms: evo.forms.length
+                totalForms: evolutionData[evoId].forms.length
             };
         }
         return {
@@ -676,392 +572,428 @@
         };
     }
 
-    // Renderizar STANDS
-    function renderStands() {
-        let filtered = [...standsNormais];
-        
-        if (activeFilter !== "all" && activeFilter !== "Evolutivo") {
-            filtered = standsNormais.filter(stand => stand.parte === activeFilter);
-        } else if (activeFilter === "Evolutivo") {
-            filtered = standsNormais.filter(stand => stand.isEvolutive === true);
+    // ==================== 50 STANDS COMPLETOS ====================
+    const standsData = [
+        { id: 1, name: "Star Platinum", user: "Jotaro Kujo", desc: "Força bruta, precisão lendária e parada temporal.", fullDesc: "Star Platinum possui força destrutiva A, reflexos sobre-humanos e o poder de parar o tempo.", stats: ["Força: A", "Velocidade: A", "Alcance: C", "Durabilidade: A"], gradient: "linear-gradient(135deg, #1a2a6c, #b21f1f)", parte: "Parte 3" },
+        { id: 2, name: "The World", user: "Dio Brando", desc: "Para o tempo por até 9 segundos.", fullDesc: "The World tem força física opressora e a habilidade de parar o fluxo do tempo globalmente.", stats: ["Força: A", "Velocidade: A", "Alcance: C", "Durabilidade: A"], gradient: "linear-gradient(135deg, #25202b, #7d5d1a)", parte: "Parte 3" },
+        { id: 3, name: "Hermit Purple", user: "Joseph Joestar", desc: "Videiras que canalizam hamon.", fullDesc: "Gera espinhos de videira para atacar e escalar.", stats: ["Força: D", "Velocidade: C", "Alcance: B", "Utilidade: A"], gradient: "linear-gradient(135deg, #2e5c3e, #6b8e23)", parte: "Parte 3" },
+        { id: 4, name: "Magician's Red", user: "Mohammed Avdol", desc: "Manipula fogo com 'Cross Fire Hurricane'.", fullDesc: "Gera chamas intensas, detecta calor corporal.", stats: ["Força: B", "Velocidade: B", "Alcance: C", "Poder: A"], gradient: "linear-gradient(135deg, #dc143c, #ff6347)", parte: "Parte 3" },
+        { id: 5, name: "Silver Chariot", user: "Jean Pierre Polnareff", desc: "Espadachim veloz, pode remover armadura.", fullDesc: "Usa uma rapieira com precisão sobre-humana.", stats: ["Força: A", "Velocidade: A", "Alcance: C", "Precisão: B"], gradient: "linear-gradient(135deg, #1e1e2f, #bdc3c7)", parte: "Parte 3" },
+        { id: 6, name: "Hierophant Green", user: "Noriaki Kakyoin", desc: "Controla marionetes e atira esmeraldas.", fullDesc: "Stand de alcance longo que pode se esticar.", stats: ["Força: C", "Velocidade: B", "Alcance: B", "Precisão: C"], gradient: "linear-gradient(135deg, #006400, #32cd32)", parte: "Parte 3" },
+        { id: 7, name: "Cream", user: "Vanilla Ice", desc: "Apaga o espaço, tornando-se um vórtice.", fullDesc: "Cream pode apagar completamente o espaço.", stats: ["Força: B", "Velocidade: B", "Alcance: D", "Letalidade: A"], gradient: "linear-gradient(135deg, #1a1a1a, #3d3d3d)", parte: "Parte 3" },
+        { id: 8, name: "Justice", user: "Enya the Hag", desc: "Controla corpos com ferimentos.", fullDesc: "Stand de névoa que controla qualquer pessoa com um corte.", stats: ["Força: D", "Velocidade: C", "Alcance: A", "Controle: A"], gradient: "linear-gradient(135deg, #4a4a4a, #8a8a8a)", parte: "Parte 3" },
+        { id: 9, name: "Crazy Diamond", user: "Josuke Higashikata", desc: "Restaura objetos, cura ferimentos.", fullDesc: "Pode restaurar qualquer coisa quebrada.", stats: ["Força: A", "Velocidade: A", "Alcance: D", "Utilidade: S"], gradient: "linear-gradient(135deg, #182848, #4b6cb7)", parte: "Parte 4" },
+        { id: 10, name: "Killer Queen", user: "Yoshikage Kira", desc: "Transforma objetos em bombas.", fullDesc: "Sheer Heart Attack e Bites the Dust.", stats: ["Força: A", "Velocidade: B", "Alcance: D", "Letalidade: S"], gradient: "linear-gradient(135deg, #2b2d42, #e63946)", parte: "Parte 4" },
+        { id: 11, name: "Heaven's Door", user: "Rohan Kishibe", desc: "Transforma pessoas em livros.", fullDesc: "Rohan pode impor ordens que não podem ser quebradas.", stats: ["Controle: S", "Velocidade: B", "Alcance: B", "Potencial: A"], gradient: "linear-gradient(135deg, #1a2a3a, #d364f0)", parte: "Parte 4" },
+        { id: 12, name: "Echoes", user: "Koichi Hirose", desc: "Evolui em 3 atos.", fullDesc: "Stand evolutivo com três formas distintas.", stats: ["Versatilidade: A", "Potencial: S", "Crescimento: S"], gradient: "linear-gradient(135deg, #228b22, #adff2f)", parte: "Parte 4" },
+        { id: 13, name: "The Hand", user: "Okuyasu Nijimura", desc: "Apaga espaço e matéria.", fullDesc: "Pode apagar qualquer coisa para aproximar objetos.", stats: ["Força: B", "Velocidade: B", "Alcance: D", "Potencial: S"], gradient: "linear-gradient(135deg, #2c3e50, #5d6d7e)", parte: "Parte 4" },
+        { id: 14, name: "Aqua Necklace", user: "Anjuro Katagiri", desc: "Ser líquido que se infiltra.", fullDesc: "Stand líquido que pode se infiltrar em qualquer lugar.", stats: ["Infiltração: A", "Velocidade: B", "Alcance: B"], gradient: "linear-gradient(135deg, #008080, #20b2aa)", parte: "Parte 4" },
+        { id: 15, name: "Bad Company", user: "Keicho Nijimura", desc: "Exército em miniatura.", fullDesc: "Soldados, tanques e helicópteros em miniatura.", stats: ["Poder: B", "Alcance: C", "Versatilidade: A"], gradient: "linear-gradient(135deg, #2e4a2e, #4c8b4c)", parte: "Parte 4" },
+        { id: 16, name: "Red Hot Chili Pepper", user: "Akira Otoishi", desc: "Stand elétrico que viaja por condutores.", fullDesc: "Quanto mais eletricidade, mais forte.", stats: ["Velocidade: A", "Força: A", "Alcance: A"], gradient: "linear-gradient(135deg, #ff6347, #ffa500)", parte: "Parte 4" },
+        { id: 17, name: "Enigma", user: "Terunosuke Miyamoto", desc: "Prende pessoas/papéis manifestando medo.", fullDesc: "Transforma hábitos de medo em papel.", stats: ["Controle: B", "Alcance: C", "Estratégia: B"], gradient: "linear-gradient(135deg, #663399, #9370db)", parte: "Parte 4" },
+        { id: 18, name: "Gold Experience", user: "Giorno Giovanna", desc: "Dá vida a objetos, reflexo de dano.", fullDesc: "Cria seres vivos a partir de objetos inanimados.", stats: ["Destruição: C", "Velocidade: A", "Alcance: C", "Potencial: A"], gradient: "linear-gradient(135deg, #ffd700, #ffaa00)", parte: "Parte 5" },
+        { id: 19, name: "Sticky Fingers", user: "Bruno Bucciarati", desc: "Cria zíperes em qualquer superfície.", fullDesc: "Zíperes para separar membros, criar bolsas.", stats: ["Força: A", "Velocidade: A", "Alcance: C", "Versatilidade: A"], gradient: "linear-gradient(135deg, #2c3e50, #9b59b6)", parte: "Parte 5" },
+        { id: 20, name: "Aerosmith", user: "Narancia Ghirga", desc: "Avião armado com radar de CO₂.", fullDesc: "Ataques aéreos. Radar detecta respiração.", stats: ["Alcance: B", "Poder: B", "Radar: S"], gradient: "linear-gradient(135deg, #4682b4, #b0e0e6)", parte: "Parte 5" },
+        { id: 21, name: "Sex Pistols", user: "Guido Mista", desc: "Seis seres que guiam balas.", fullDesc: "Controlam trajetória, ricocheteiam balas.", stats: ["Precisão: S", "Velocidade: B", "Estratégia: A"], gradient: "linear-gradient(135deg, #800000, #f08080)", parte: "Parte 5" },
+        { id: 22, name: "King Crimson", user: "Diavolo", desc: "Apaga o tempo e prevê o futuro.", fullDesc: "Salta um intervalo temporal.", stats: ["Poder: S", "Velocidade: A", "Epitáfio: S"], gradient: "linear-gradient(135deg, #8b0000, #ff6347)", parte: "Parte 5" },
+        { id: 23, name: "Moody Blues", user: "Leone Abbacchio", desc: "Repete eventos passados.", fullDesc: "Reproduz fielmente o que ocorreu no local.", stats: ["Investigação: S", "Utilidade: A", "Precisão: S"], gradient: "linear-gradient(135deg, #4a148c, #9c27b0)", parte: "Parte 5" },
+        { id: 24, name: "Purple Haze", user: "Pannacotta Fugo", desc: "Vírus mortal que destrói carne.", fullDesc: "Cápsulas com vírus letal.", stats: ["Letalidade: S", "Alcance: C", "Risco: Alto"], gradient: "linear-gradient(135deg, #4b0082, #8a2be2)", parte: "Parte 5" },
+        { id: 25, name: "Spice Girl", user: "Trish Una", desc: "Amolece objetos e aumenta elasticidade.", fullDesc: "Deixa superfícies macias como borracha.", stats: ["Defesa: A", "Versatilidade: B", "Utilidade: A"], gradient: "linear-gradient(135deg, #ff69b4, #db7093)", parte: "Parte 5" },
+        { id: 26, name: "Metallica", user: "Risotto Nero", desc: "Controla ferro no sangue.", fullDesc: "Manipulação letal de ferro.", stats: ["Ofensiva: S", "Furtividade: S", "Controle: A"], gradient: "linear-gradient(135deg, #708090, #c0c0c0)", parte: "Parte 5" },
+        { id: 27, name: "Clash", user: "Squalo", desc: "Teleporte entre líquidos.", fullDesc: "Ataca como um tubarão miniatura.", stats: ["Velocidade: S", "Imprevisível: S", "Alcance: A"], gradient: "linear-gradient(135deg, #2f4f4f, #20b2aa)", parte: "Parte 5" },
+        { id: 28, name: "Stone Free", user: "Jolyne Cujoh", desc: "Desfia corpo em cordas.", fullDesc: "Transforma o corpo em cordas vivas.", stats: ["Versatilidade: S", "Resistência: A", "Criatividade: A"], gradient: "linear-gradient(135deg, #1a5276, #5dade2)", parte: "Parte 6" },
+        { id: 29, name: "Whitesnake", user: "Enrico Pucci", desc: "Rouba discos de memória.", fullDesc: "Extrai discos com memórias e Stands.", stats: ["Controle: S", "Furtividade: A", "Hax: S"], gradient: "linear-gradient(135deg, #2c2c2c, #bb8fce)", parte: "Parte 6" },
+        { id: 30, name: "C-Moon", user: "Enrico Pucci", desc: "Inverte a gravidade.", fullDesc: "Toca o chão e você cai para o céu.", stats: ["Gravidade: S", "Letalidade: A", "Alcance: A"], gradient: "linear-gradient(135deg, #1a237e, #3f51b5)", parte: "Parte 6" },
+        { id: 31, name: "Made in Heaven", user: "Enrico Pucci", desc: "Acelera o tempo até resetar o universo.", fullDesc: "Velocidade exponencial recriando o universo.", stats: ["Velocidade: ∞", "Poder: S+", "Reset: Único"], gradient: "linear-gradient(135deg, #0a0f1a, #a8c0ff)", parte: "Parte 6" },
+        { id: 32, name: "Weather Report", user: "Weather Report", desc: "Manipula clima.", fullDesc: "Controla clima, chuva ácida, relâmpagos.", stats: ["Destruição: A", "Alcance: A", "Versatilidade: S"], gradient: "linear-gradient(135deg, #0277bd, #29b6f6)", parte: "Parte 6" },
+        { id: 33, name: "Kiss", user: "Ermes Costello", desc: "Cria cópias com adesivos.", fullDesc: "Adesivos que duplicam objetos.", stats: ["Dano: A", "Estratégia: B", "Utilidade: A"], gradient: "linear-gradient(135deg, #ff69b4, #c71585)", parte: "Parte 6" },
+        { id: 34, name: "Diver Down", user: "Narciso Anasui", desc: "Mergulha dentro de objetos.", fullDesc: "Pode se esconder dentro de superfícies.", stats: ["Defesa: A", "Infiltração: S", "Versatilidade: B"], gradient: "linear-gradient(135deg, #006994, #00ced1)", parte: "Parte 6" },
+        { id: 35, name: "Tusk", user: "Johnny Joestar", desc: "Rotação infinita (ACT1 a ACT4).", fullDesc: "ACT4 possui rotação infinita que perfura qualquer defesa.", stats: ["Poder: S+", "Potencial: S", "Rotação: Infinita"], gradient: "linear-gradient(135deg, #003300, #32cd32)", parte: "Parte 7" },
+        { id: 36, name: "D4C", user: "Funny Valentine", desc: "Salta entre dimensões.", fullDesc: "Love Train: redireciona calamidades.", stats: ["Dimensional: S", "Imortalidade: S", "Alcance: A"], gradient: "linear-gradient(135deg, #4a0000, #dc143c)", parte: "Parte 7" },
+        { id: 37, name: "Scary Monsters", user: "Diego Brando", desc: "Transforma em dinossauros.", fullDesc: "Infecção fóssil: controle sobre dinossauros.", stats: ["Controle: A", "Força: B", "Transformação: A"], gradient: "linear-gradient(135deg, #4a3b2c, #b8860b)", parte: "Parte 7" },
+        { id: 38, name: "Ball Breaker", user: "Gyro Zeppeli", desc: "Rotação superdimensional.", fullDesc: "Ataque que envelhece o alvo instantaneamente.", stats: ["Envelhecimento: S", "Poder: A", "Único: S"], gradient: "linear-gradient(135deg, #b8860b, #ffd700)", parte: "Parte 7" },
+        { id: 39, name: "Catch the Rainbow", user: "Blackmore", desc: "Manipula gotas de chuva.", fullDesc: "Anda sobre gotas e as usa como armas.", stats: ["Clima: A", "Agilidade: A", "Condição: Chuva"], gradient: "linear-gradient(135deg, #2c3e50, #a0c0e0)", parte: "Parte 7" },
+        { id: 40, name: "In a Silent Way", user: "Sandman", desc: "Transforma sons em objetos.", fullDesc: "Pega sons e os materializa como armas.", stats: ["Criatividade: S", "Versatilidade: A", "Potencial: B"], gradient: "linear-gradient(135deg, #5d3a1a, #b87c4f)", parte: "Parte 7" },
+        { id: 41, name: "Soft & Wet", user: "Josuke (Parte 8)", desc: "Rouba propriedades com bolhas.", fullDesc: "Bolhas removem características como visão, som.", stats: ["Plunder: S", "Versatilidade: S", "Criatividade: S+"], gradient: "linear-gradient(135deg, #0b4f6c, #d6f2ff)", parte: "Parte 8" },
+        { id: 42, name: "Wonder of U", user: "Tooru", desc: "Calamidade a quem persegue.", fullDesc: "Stand autônomo que causa acidentes fatais.", stats: ["Calamidade: S++", "Alcance: Global", "Defesa: Absoluta"], gradient: "linear-gradient(135deg, #1a1a2e, #0f3460)", parte: "Parte 8" },
+        { id: 43, name: "Paisley Park", user: "Yasuho Hirose", desc: "Guia para soluções.", fullDesc: "Navegação, mostrar rotas, revelar segredos.", stats: ["Utilidade: S", "Alcance: A", "Informação: S"], gradient: "linear-gradient(135deg, #ff6b6b, #e74c3c)", parte: "Parte 8" },
+        { id: 44, name: "Nut King Call", user: "Joshu Higashikata", desc: "Desparafusa partes do corpo.", fullDesc: "Cria parafusos que separam membros.", stats: ["Desmontagem: B", "Controle: B", "Alcance: C"], gradient: "linear-gradient(135deg, #a0522d, #cd853f)", parte: "Parte 8" },
+        { id: 45, name: "Doggy Style", user: "Daiya Higashikata", desc: "Transforma corpo em fios.", fullDesc: "Cordas tipo cabo de aço.", stats: ["Flexibilidade: A", "Controle: B", "Resistência: B"], gradient: "linear-gradient(135deg, #cd853f, #f4a460)", parte: "Parte 8" },
+        { id: 46, name: "November Rain", user: "Jodio Joestar", desc: "Chuva esmagadora.", fullDesc: "Gotas densas que pressionam adversários.", stats: ["Poder: B", "Alcance: C", "Pressão: A"], gradient: "linear-gradient(135deg, #0a2f6c, #3b82f6)", parte: "Parte 9" },
+        { id: 47, name: "Smooth Operators", user: "Dragona Joestar", desc: "Manipula objetos à distância.", fullDesc: "Move partes do ambiente.", stats: ["Telecinese: B", "Versatilidade: A", "Precisão: B"], gradient: "linear-gradient(135deg, #9b59b6, #e67e22)", parte: "Parte 9" },
+        { id: 48, name: "The Hustle", user: "Paco Laburantes", desc: "Aumenta tensão muscular.", fullDesc: "Explosão de força em pontos específicos.", stats: ["Força: B", "Velocidade: C", "Potencial: B"], gradient: "linear-gradient(135deg, #f39c12, #e67e22)", parte: "Parte 9" },
+        { id: 49, name: "Anubis", user: "Espada Amaldiçoada", desc: "Stand espada que controla o portador.", fullDesc: "Cada golpe fica mais rápido.", stats: ["Velocidade: A", "Controle: A", "Letalidade: B"], gradient: "linear-gradient(135deg, #2c2c2c, #5a2e2e)", parte: "Especial" },
+        { id: 50, name: "Super Fly", user: "Toyohiro Kanedaichi", desc: "Torre elétrica que aprisiona.", fullDesc: "Quem entra não pode sair sozinho.", stats: ["Aprisionamento: A", "Reflexo: A", "Defesa: B"], gradient: "linear-gradient(135deg, #4a4a4a, #8a8a8a)", parte: "Especial" }
+    ];
+
+    // ==================== PORTADORES ====================
+    const portadores = [];
+    const usuariosMap = new Map();
+
+    standsData.forEach(stand => {
+        if (!usuariosMap.has(stand.user)) {
+            usuariosMap.set(stand.user, {
+                nome: stand.user,
+                stands: [],
+                parte: stand.parte
+            });
         }
-        
-        document.getElementById('totalCounter').innerHTML = `🎴 ${filtered.length} STANDS ${activeFilter !== "all" ? `· ${activeFilter}` : "· 50 STANDS"}`;
-        
-        const container = document.getElementById('standsContainer');
-        container.innerHTML = filtered.map(stand => {
-            const evo = getEvolutiveDisplay(stand);
-            const actBadgeText = evo.isEvolutive ? 
-                (evo.displayName.includes("ACT") ? evo.displayName.split(" ")[1] : 
-                (evo.displayName.includes("Requiem") ? "REQUIEM" : 
-                (evo.displayName.includes("The World") && evo.displayName !== "The World" ? "EVOLVED" : 
-                (evo.currentFormIndex > 0 ? `FORM ${evo.currentFormIndex +1}/${evo.totalForms}` : "BASE")))) : "";
-            
-            return `
-                <div class="stand-card" data-id="${stand.id}" data-evo="${stand.evolutionId || ''}" onclick="openStandModal(${stand.id})">
-                    <div class="stand-preview" style="background: ${getImagemStand(stand.name, evo.displayName, evo.displayGradient)}; background-size: cover; background-position: center; background-blend: overlay; min-height: 220px;">
-                        <span class="part-tag"><i class="fas fa-tag"></i> ${stand.parte}</span>
-                        ${evo.isEvolutive && actBadgeText ? `<span class="act-badge"><i class="fas fa-star"></i> ${actBadgeText}</span>` : ''}
-                    </div>
-                    <div class="stand-content">
-                        <div class="stand-title">
-                            ${evo.displayName}
-                            ${evo.isEvolutive ? `<button class="reset-btn" onclick="resetStand('${stand.evolutionId}', event)" title="Resetar"><i class="fas fa-undo-alt"></i></button>` : ''}
-                        </div>
-                        <div class="stand-user"><i class="fas fa-user-astronaut"></i> ${stand.user}</div>
-                        <div class="stand-desc">${evo.displayDesc}</div>
-                        <div class="stats-row">
-                            ${evo.displayStats.map(s => `<span class="stat-chip"><i class="fas fa-chart-simple"></i> ${s}</span>`).join('')}
-                        </div>
-                        ${evo.isEvolutive ? `
-                            <button class="evo-btn" onclick="evolveStand('${stand.evolutionId}', event)">
-                                <i class="fas ${evo.isMaxForm ? 'fa-arrow-rotate-left' : 'fa-arrow-up'}"></i>
-                                ${evo.isMaxForm ? `VOLTAR` : `EVOLUIR PARA ${evo.nextFormName}`}
-                            </button>
-                        ` : `
-                            <button class="btn-details" onclick="event.stopPropagation(); openStandModal(${stand.id})"><i class="fas fa-eye"></i> VER DETALHES</button>
-                        `}
+        usuariosMap.get(stand.user).stands.push(stand.name);
+    });
+
+    usuariosMap.forEach((value) => {
+        portadores.push({
+            nome: value.nome,
+            quantidadeStands: value.stands.length,
+            stands: value.stands,
+            parte: value.parte,
+            desc: `Portador de ${value.stands.length} Stand(s) da ${value.parte}.`
+        });
+    });
+    portadores.sort((a, b) => a.nome.localeCompare(b.nome));
+
+    // ==================== SISTEMA DE LOGIN ====================
+    const STORAGE_USERS = "jojo_stands_users";
+    const STORAGE_SESSION = "jojo_current_session";
+
+    let usuarios = [];
+    let usuarioLogado = null;
+    let activeFilter = "all";
+    let activeTab = "stands";
+
+    function carregarDados() {
+        const saved = localStorage.getItem(STORAGE_USERS);
+        if (saved) usuarios = JSON.parse(saved);
+        const session = sessionStorage.getItem(STORAGE_SESSION);
+        if (session) {
+            const sessionData = JSON.parse(session);
+            usuarioLogado = usuarios.find(u => u.id === sessionData.userId);
+        }
+        atualizarBarraUsuario();
+    }
+
+    function salvarUsuarios() { localStorage.setItem(STORAGE_USERS, JSON.stringify(usuarios)); }
+    function salvarSessao() {
+        if (usuarioLogado) sessionStorage.setItem(STORAGE_SESSION, JSON.stringify({ userId: usuarioLogado.id }));
+        else sessionStorage.removeItem(STORAGE_SESSION);
+    }
+
+    function mostrarToast(mensagem, cor) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.style.background = cor;
+        toast.innerHTML = mensagem;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transition = '0.3s';
+            setTimeout(() => toast.remove(), 300);
+        }, 2500);
+    }
+
+    function registrarUsuario(nome, email, senha) {
+        if (!nome || !email || !senha) { mostrarToast("❌ Preencha todos os campos!", "#e74c3c"); return false; }
+        if (usuarios.some(u => u.email === email)) { mostrarToast("❌ E-mail já cadastrado!", "#e74c3c"); return false; }
+        if (senha.length < 4) { mostrarToast("❌ Senha deve ter pelo menos 4 caracteres!", "#e74c3c"); return false; }
+        usuarios.push({ id: Date.now(), nome, email, senha, favoritos: [], dataCadastro: new Date().toISOString() });
+        salvarUsuarios();
+        mostrarToast("✅ Cadastro realizado! Faça login.", "#2ecc71");
+        return true;
+    }
+
+    function fazerLogin(email, senha) {
+        const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+        if (usuario) {
+            usuarioLogado = usuario;
+            salvarSessao();
+            atualizarBarraUsuario();
+            fecharModalLogin();
+            mostrarToast(`🎉 Bem-vindo, ${usuario.nome}!`, "#2ecc71");
+            renderizarConteudo();
+            return true;
+        } else {
+            mostrarToast("❌ E-mail ou senha incorretos!", "#e74c3c");
+            return false;
+        }
+    }
+
+    function fazerLogout() {
+        usuarioLogado = null;
+        sessionStorage.removeItem(STORAGE_SESSION);
+        atualizarBarraUsuario();
+        mostrarToast("👋 Você saiu da sua conta!", "#f39c12");
+        if (activeFilter === "favoritos") { activeFilter = "all"; atualizarFiltros(); }
+        renderizarConteudo();
+    }
+
+    function toggleFavorito(standId) {
+        if (!usuarioLogado) { mostrarToast("🔐 Faça login para favoritar!", "#f39c12"); abrirModalLogin(); return false; }
+        if (!usuarioLogado.favoritos) usuarioLogado.favoritos = [];
+        const index = usuarioLogado.favoritos.indexOf(standId);
+        index === -1 ? usuarioLogado.favoritos.push(standId) : usuarioLogado.favoritos.splice(index, 1);
+        const userIndex = usuarios.findIndex(u => u.id === usuarioLogado.id);
+        if (userIndex !== -1) usuarios[userIndex] = usuarioLogado;
+        salvarUsuarios();
+        atualizarBarraUsuario();
+        renderizarConteudo();
+        return true;
+    }
+
+    function isFavorito(standId) {
+        return usuarioLogado && usuarioLogado.favoritos && usuarioLogado.favoritos.includes(standId);
+    }
+
+    function atualizarBarraUsuario() {
+        const barra = document.getElementById('userBar');
+        if (!barra) return;
+        if (usuarioLogado) {
+            barra.innerHTML = `
+                <div class="user-info">
+                    <div class="user-avatar">${usuarioLogado.nome.charAt(0).toUpperCase()}</div>
+                    <div class="user-details">
+                        <div class="user-name">${usuarioLogado.nome}</div>
+                        <div class="user-email">${usuarioLogado.email}</div>
+                        <div class="user-stats">❤️ ${usuarioLogado.favoritos?.length || 0} favoritos</div>
                     </div>
                 </div>
+                <button class="logout-btn" onclick="fazerLogout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
             `;
-        }).join('');
-        
-        if (filtered.length === 0) {
-            container.innerHTML = '<div class="no-results"><i class="fas fa-search"></i> Nenhum Stand encontrado para este filtro.</div>';
+        } else {
+            barra.innerHTML = `
+                <div class="user-info"><div class="welcome-badge"><i class="fas fa-user-friends"></i> Visitante</div></div>
+                <div><button class="register-btn" onclick="abrirModalRegister()"><i class="fas fa-user-plus"></i> Cadastrar</button>
+                <button class="login-btn" onclick="abrirModalLogin()"><i class="fas fa-sign-in-alt"></i> Entrar</button></div>
+            `;
         }
     }
 
-        // ==================== SISTEMA DE IMAGENS ====================
+    // MODAIS
+    let currentModalMode = 'login';
 
-// Mapeamento das imagens (ajuste os caminhos conforme suas imagens)
-const imagensStands = {
-    // Parte 3
-    "Star Platinum": "imagens/star platinum.jpg",
-    "The World": "imagens/the world.jpg",
-    "Hermit Purple": "imagens/hermet purple.jpg",
-    "Magician's Red": "imagens/magician red.jpg",
-    "Silver Chariot": "imagens/silver chariot.jpg",
-    "Hierophant Green": "imagens/hierophant green.jpg",
-    "Cream": "imagens/cream.jpg",
-    "Justice": "imagens/justice.jpg",
-    
-    // Parte 4
-    "Crazy Diamond": "imagens/crazy diamond.jpg",
-    "Killer Queen": "imagens/killer queen.jpg",
-    "Heaven's Door": "imagens/heavens door.jpg",
-    "The Hand": "imagens/the hand.jpg",
-    "Aqua Necklace": "imagens/aqua necklace.jpg",
-    "Bad Company": "imagens/bad company.jpg",
-    "Red Hot Chili Pepper": "imagens/rhcp.jpg",
-    "Enigma": "imagens/enigma.jpg",
-    
-    // Parte 5
-    "Sticky Fingers": "imagens/sticky fingers.jpg",
-    "Aerosmith": "imagens/aero smith.jpg",
-    "Sex Pistols": "imagens/sex pistol.jpg",
-    "King Crimson": "imagens/king crimson.jpg",
-    "Moody Blues": "imagens/moody blues.jpg",
-    "Purple Haze": "imagens/purple haze.jpg",
-    "Spice Girl": "imagens/spice girl.jpg",
-    "Metallica": "imagens/metallica.jpg",
-    "Clash": "imagens/clash.jpg",
-    
-    // Parte 6
-    "Stone Free": "imagens/stone free.jpg",
-    "Whitesnake": "imagens/white snake.jpg",
-    "Weather Report": "imagens/weather report.jpg",
-    "Kiss": "imagens/kiss.jpg",
-    "Diver Down": "imagens/diver down.jpg",
-    
-    // Parte 7
-    "D4C": "imagens/d4c.jpg",
-    "Scary Monsters": "imagens/scary monsters.jpg",
-    "Ball Breaker": "imagens/ball breaker.jpg",
-    "Catch the Rainbow": "imagens/catch the rainbow.jpg",
-    "In a Silent Way": "imagens/in a silent way.jpg",
-    
-    // Parte 8
-    "Soft & Wet": "imagens/soft and wet.jpg",
-    "Wonder of U": "imagens/wonder of u.jpg",
-    "Paisley Park": "imagens/paisley park.jpg",
-    "Nut King Call": "imagens/nut king call.jpg",
-    "Doggy Style": "imagens/doggy style.jpg",
-    
-    // Parte 9
-    "November Rain": "imagens/november rain.jpg",
-    "Smooth Operators": "imagens/smooth operators.jpg",
-    "The Hustle": "imagens/the hustle.jpg",
-    
-    // Especiais
-    "Anubis": "imagens/anubis.jpg",
-    "Super Fly": "imagens/super fly.jpg"
-};
-
-// Mapeamento para formas evolutivas
-const imagensEvolutivas = {
-
-    "Gold Experience": "imagens/gold experience.jpg",
-    "Gold Experience Requiem": "imagens/gold experience requiem.jpg",
-
-    // Echoes
-    "Echoes ACT1": "imagens/echoes act1.jpg",
-    "Echoes ACT2": "imagens/echoes act2.jpg",
-    "Echoes ACT3": "imagens/echoes act3.jpg",
-    
-    "Whitesnake": "imagens/white snake.jpg",
-    "C-Moon": "imagens/cmoon.jpg",
-    "Made in Heaven": "imagens/made in heaven.jpg",
-    
-    // Tusk
-    "Tusk ACT1": "imagens/tusk act1.jpg",
-    "Tusk ACT2": "imagens/tusk act2.jpg",
-    "Tusk ACT3": "imagens/tusk act3.jpg",
-    "Tusk ACT4": "imagens/tusk act4.jpg",
-    
-    // Silver Chariot
-    "Silver Chariot Requiem": "imagens/silver chariot requiem.jpg",
-    
-    // Star Platinum
-    "Star Platinum: The World": "imagens/star platinum the world.jpg",
-    
-    // The World
-    "The World (9 segundos)": "imagens/the world 9s.jpg",
-    
-    // Killer Queen
-    "Killer Queen + Sheer Heart Attack": "imagens/killer queen sheer.jpg",
-    "Killer Queen: Bites the Dust": "imagens/killer queen bites.jpg"
-
-};
-
-// ==================== IMAGENS DOS PORTADORES ====================
-const imagensPortadores = {
-    // Parte 3
-    "Jotaro Kujo": "imagens2/jotaro-kujo.jfif",
-    "Dio Brando": "imagens2/dio-brando.jpg",
-    "Joseph Joestar": "imagens2/joseph-joestar.jpg",
-    "Mohammed Avdol": "imagens2/mohammed-avdol.jpg",
-    "Jean Pierre Polnareff": "imagens2/jean-pierre-polnareff.jpg",
-    "Noriaki Kakyoin": "imagens2/kakyoin.jpg",
-    "Vanilla Ice": "imagens2/vanilla-ice.jpg",
-    "Enya the Hag": "imagens2/enya.jpg",
-    
-    // Parte 4
-    "Josuke Higashikata": "imagens2/josuke.jpg",
-    "Yoshikage Kira": "imagens2/kira.jpg",
-    "Rohan Kishibe": "imagens2/rohan.jpg",
-    "Koichi Hirose": "imagens2/koichi.jpg",
-    "Okuyasu Nijimura": "imagens2/okuyasu.jpg",
-    "Anjuro Katagiri": "imagens2/anjuro.jpg",
-    "Keicho Nijimura": "imagens2/keicho.jpg",
-    "Akira Otoishi": "imagens2/akira.jpg",
-    "Terunosuke Miyamoto": "imagens2/terunosuke.jpg",
-    
-    // Parte 5
-    "Giorno Giovanna": "imagens2/giorno.jpg",
-    "Bruno Bucciarati": "imagens2/bucciarati.jpg",
-    "Narancia Ghirga": "imagens2/narancia.jpg",
-    "Guido Mista": "imagens2/mista.jpg",
-    "Diavolo": "imagens2/diavolo.jpg",
-    "Leone Abbacchio": "imagens2/abbacchio.jpg",
-    "Pannacotta Fugo": "imagens2/fugo.jpg",
-    "Trish Una": "imagens2/trish.jpg",
-    "Risotto Nero": "imagens2/risotto.jpg",
-    "Squalo": "imagens2/squalo.jpg",
-    
-    // Parte 6
-    "Jolyne Cujoh": "imagens2/jolyne.jpg",
-    "Enrico Pucci": "imagens2/pucci.jpg",
-    "Weather Report": "imagens2/weather.jpg",
-    "Ermes Costello": "imagens2/ermes.jpg",
-    "Narciso Anasui": "imagens2/anasui.jpg",
-    
-    // Parte 7
-    "Johnny Joestar": "imagens2/johnny.jpg",
-    "Funny Valentine": "imagens2/valentine.jpg",
-    "Diego Brando": "imagens2/diego.jpg",
-    "Gyro Zeppeli": "imagens2/gyro.jpg",
-    "Blackmore": "imagens2/blackmore.jpg",
-    "Sandman": "imagens2/sandman.jpg",
-    
-    // Parte 8
-    "Josuke Higashikata (Parte 8)": "imagens2/josuke8.jpg",
-    "Tooru": "imagens2/tooru.jpg",
-    "Yasuho Hirose": "imagens2/yasuho.jfif",
-    "Joshu Higashikata": "imagens2/joshu.jpg",
-    "Daiya Higashikata": "imagens2/daiya.jpg",
-    
-    // Parte 9
-    "Jodio Joestar": "imagens2/jodio.jpg",
-    "Dragona Joestar": "imagens2/dragona.jpg",
-    "Paco Laburantes": "imagens2/paco.jpg",
-    
-    // Especiais
-    "Espada Amaldiçoada": "imagens2/anubis.jpg",
-    "Toyohiro Kanedaichi": "imagens2/toyohiro.jpg"
-};
-
-// Função para obter imagem do portador
-function getImagemPortador(nomePortador) {
-    if (imagensPortadores[nomePortador]) {
-        return imagensPortadores[nomePortador];
-    }
-    // Fallback: gradiente padrão
-    return null;
-}
-
-// Função para obter a imagem do Stand
-function getImagemStand(nomeStand, nomeForma, gradient) {
-    // Primeiro verifica se é uma forma evolutiva
-    if (nomeForma && imagensEvolutivas[nomeForma]) {
-        return `url('${imagensEvolutivas[nomeForma]}')`;
-    }
-    // Depois verifica o Stand normal
-    if (imagensStands[nomeStand]) {
-        return `url('${imagensStands[nomeStand]}')`;
-    }
-    // Fallback: gradiente
-    return gradient;
-}
-
-    // Renderizar PORTADORES
-    function renderPortadores() {
-        let filtered = [...portadores];
-        
-        if (activeFilter !== "all") {
-            filtered = portadores.filter(p => p.parte === activeFilter);
+    function renderizarModalLogin() {
+        const container = document.getElementById('modalContent');
+        if (!container) return;
+        if (currentModalMode === 'login') {
+            container.innerHTML = `
+                <div class="login-header"><h2>ENTRAR</h2><p>Faça login para favoritar seus Stands</p></div>
+                <div class="input-group"><label>E-MAIL</label><input type="email" id="loginEmail" placeholder="seu@email.com"></div>
+                <div class="input-group"><label>SENHA</label><input type="password" id="loginSenha" placeholder="••••••"></div>
+                <button class="login-btn-submit" id="submitLoginBtn">ENTRAR</button>
+                <div class="switch-auth">Não tem conta? <a id="switchToRegister">CADASTRE-SE</a></div>
+            `;
+            document.getElementById('submitLoginBtn')?.addEventListener('click', () => {
+                fazerLogin(document.getElementById('loginEmail').value, document.getElementById('loginSenha').value);
+            });
+            document.getElementById('switchToRegister')?.addEventListener('click', () => {
+                currentModalMode = 'register';
+                renderizarModalLogin();
+            });
+        } else {
+            container.innerHTML = `
+                <div class="login-header"><h2>CADASTRO</h2><p>Crie sua conta e favorite seus Stands</p></div>
+                <div class="input-group"><label>NOME</label><input type="text" id="registerNome" placeholder="Seu nome"></div>
+                <div class="input-group"><label>E-MAIL</label><input type="email" id="registerEmail" placeholder="seu@email.com"></div>
+                <div class="input-group"><label>SENHA</label><input type="password" id="registerSenha" placeholder="mínimo 4 caracteres"></div>
+                <button class="login-btn-submit" id="submitRegisterBtn">CADASTRAR</button>
+                <div class="switch-auth">Já tem conta? <a id="switchToLogin">FAÇA LOGIN</a></div>
+            `;
+            document.getElementById('submitRegisterBtn')?.addEventListener('click', () => {
+                const nome = document.getElementById('registerNome').value;
+                const email = document.getElementById('registerEmail').value;
+                const senha = document.getElementById('registerSenha').value;
+                if (registrarUsuario(nome, email, senha)) {
+                    currentModalMode = 'login';
+                    renderizarModalLogin();
+                }
+            });
+            document.getElementById('switchToLogin')?.addEventListener('click', () => {
+                currentModalMode = 'login';
+                renderizarModalLogin();
+            });
         }
+    }
+
+    function abrirModalLogin() { currentModalMode = 'login'; renderizarModalLogin(); document.getElementById('loginModal').style.display = 'flex'; }
+    function abrirModalRegister() { currentModalMode = 'register'; renderizarModalLogin(); document.getElementById('loginModal').style.display = 'flex'; }
+    function fecharModalLogin() { document.getElementById('loginModal').style.display = 'none'; }
+
+    function abrirModalDetalhes(stand) {
+        const modal = document.getElementById('detailsModal');
+        const content = document.getElementById('detailsContent');
+        const imagemFundo = getImagemStand(stand.name);
+        content.innerHTML = `
+            <h2 style="color:#ffd966;">${stand.name}</h2>
+            <p><strong>Portador:</strong> ${stand.user}</p>
+            <p><strong>Parte:</strong> ${stand.parte}</p>
+            <div style="height:180px; background:${imagemFundo || stand.gradient}; background-size:cover; background-position:center; border-radius:20px; margin:1rem 0;"></div>
+            <p style="margin:1rem 0;">${stand.fullDesc}</p>
+            <div class="stats-row">${stand.stats.map(s => `<span class="stat-chip">⚡ ${s}</span>`).join('')}</div>
+            <button class="fav-btn ${isFavorito(stand.id) ? 'active' : ''}" onclick="toggleFavorito(${stand.id}); abrirModalDetalhes(standsData.find(s => s.id === ${stand.id}));">
+                <i class="fas fa-heart"></i> ${isFavorito(stand.id) ? ' REMOVER DOS FAVORITOS' : ' ADICIONAR AOS FAVORITOS'}
+            </button>
+        `;
+        modal.style.display = 'flex';
+    }
+
+    function abrirModalPortador(portador) {
+        const modal = document.getElementById('detailsModal');
+        const content = document.getElementById('detailsContent');
+        content.innerHTML = `
+            <h2 style="color:#ffd966;">${portador.nome}</h2>
+            <p><strong>Parte:</strong> ${portador.parte}</p>
+            <p><strong>Stands:</strong> ${portador.quantidadeStands}</p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin:1rem 0;">
+                ${portador.stands.map(s => `<span style="background:#f1c40f22; padding:8px 16px; border-radius:40px;">${s}</span>`).join('')}
+            </div>
+        `;
+        modal.style.display = 'flex';
+    }
+
+    function fecharModalDetalhes() { document.getElementById('detailsModal').style.display = 'none'; }
+
+        // RENDERIZAÇÃO PRINCIPAL CORRIGIDA
+    function renderizarConteudo() {
+        let dados = [];
+        let totalCount = 0;
         
-        document.getElementById('totalCounter').innerHTML = `👥 ${filtered.length} PORTADORES ${activeFilter !== "all" ? `· ${activeFilter}` : "· 42 PERSONAGENS"}`;
-        
+        if (activeTab === 'stands') {
+            dados = [...standsData];
+            if (activeFilter === "favoritos") {
+                if (usuarioLogado && usuarioLogado.favoritos) {
+                    dados = standsData.filter(stand => usuarioLogado.favoritos.includes(stand.id));
+                } else {
+                    dados = [];
+                    if (!usuarioLogado) mostrarToast("🔐 Faça login para ver seus favoritos!", "#f39c12");
+                }
+            } else if (activeFilter !== "all") {
+                dados = standsData.filter(stand => stand.parte === activeFilter);
+            }
+            totalCount = dados.length;
+            document.getElementById('totalCounter').innerHTML = `🎴 ${totalCount} STANDS ${activeFilter !== "all" && activeFilter !== "favoritos" ? `· ${activeFilter}` : (activeFilter === "favoritos" ? "· FAVORITOS" : "")}`;
+        } else {
+            dados = [...portadores];
+            if (activeFilter !== "all" && activeFilter !== "favoritos") {
+                dados = portadores.filter(p => p.parte === activeFilter);
+            }
+            totalCount = dados.length;
+            document.getElementById('totalCounter').innerHTML = `👥 ${totalCount} PORTADORES ${activeFilter !== "all" && activeFilter !== "favoritos" ? `· ${activeFilter}` : ""}`;
+        }
+
         const container = document.getElementById('standsContainer');
-        container.innerHTML = filtered.map(portador => `
-            <div class="user-card" onclick="openUserModal('${portador.nome}')">
-                <div class="user-preview" style="background: ${getImagemPortador(portador.nome) ? `url('${getImagemPortador(portador.nome)}')` : 'linear-gradient(135deg, #1a1a2e, #16213e)'}; background-size: cover; background-position: center;">
-                    <span class="part-tag"><i class="fas fa-tag"></i> ${portador.parte}</span>
-                    <span class="act-badge"><i class="fas fa-dragon"></i> ${portador.quantidadeStands} Stand(s)</span>
-                </div>
-                <div class="user-content">
-                    <div class="stand-title">
-                        <i class="fas fa-user-circle"></i> ${portador.nome}
-                    </div>
-                    <div class="stand-desc">${portador.desc}</div>
-                    <div class="user-stand-list">
-                        ${portador.stands.map(stand => `<span class="user-stand-tag"><i class="fas fa-dice-d6"></i> ${stand}</span>`).join('')}
-                    </div>
-                    <button class="btn-details" onclick="event.stopPropagation(); openUserModal('${portador.nome}')"><i class="fas fa-info-circle"></i> VER STANDS</button>
-                </div>
-            </div>
-        `).join('');
+        if (dados.length === 0) {
+            container.innerHTML = '<div class="no-results"><i class="fas fa-search"></i> Nenhum resultado encontrado.</div>';
+            return;
+        }
+
+        if (activeTab === 'stands') {
+    container.innerHTML = dados.map(stand => {
+        const evo = getEvolutiveDisplay(stand);
+        const actBadgeText = evo.isEvolutive ? 
+            (evo.displayName.includes("ACT") ? evo.displayName.split(" ")[1] : 
+            (evo.displayName.includes("Requiem") ? "REQUIEM" : 
+            (evo.displayName.includes("The World") && evo.displayName !== "The World" ? "EVOLVED" : 
+            (evo.currentFormIndex > 0 ? `FORM ${evo.currentFormIndex +1}/${evo.totalForms}` : "BASE")))) : "";
         
-        if (filtered.length === 0) {
-            container.innerHTML = '<div class="no-results"><i class="fas fa-search"></i> Nenhum portador encontrado para este filtro.</div>';
+        // PEGA A IMAGEM CORRETA (base ou evoluída)
+        const imagemDoStand = getImagemStand(stand.name, evo.displayName);
+        
+        return `
+        <div class="stand-card" data-id="${stand.id}" data-evo="${evo.isEvolutive ? evo.evolutionId : ''}">
+            <div class="stand-preview" style="background: ${imagemDoStand ? imagemDoStand : evo.displayGradient}, url('https://via.placeholder.com/400x200/151515/3a2a1f?text=★'); background-size: cover; background-blend: overlay;">
+                <span class="part-tag">${stand.parte}</span>
+                ${evo.isEvolutive && actBadgeText ? `<span class="act-badge"><i class="fas fa-star"></i> ${actBadgeText}</span>` : ''}
+                ${isFavorito(stand.id) ? '<span class="fav-badge"><i class="fas fa-heart"></i> FAVORITO</span>' : ''}
+            </div>
+            <div class="stand-content">
+                <div class="stand-title">
+                    ${evo.displayName}
+                    ${evo.isEvolutive ? `<button class="reset-btn" onclick="resetStand('${evo.evolutionId}', event)" title="Resetar"><i class="fas fa-undo-alt"></i></button>` : ''}
+                </div>
+                <div class="stand-user"><i class="fas fa-user"></i> ${stand.user}</div>
+                <div class="stand-desc">${evo.displayDesc}</div>
+                <div class="stats-row">${evo.displayStats.slice(0,3).map(s => `<span class="stat-chip">${s}</span>`).join('')}</div>
+                ${evo.isEvolutive ? `
+                    <button class="evo-btn" onclick="evolveStand('${evo.evolutionId}', event)">
+                        <i class="fas ${evo.isMaxForm ? 'fa-arrow-rotate-left' : 'fa-arrow-up'}"></i>
+                        ${evo.isMaxForm ? `VOLTAR PARA ${evolutionData[evo.evolutionId].forms[0].name}` : `EVOLUIR PARA ${evo.nextFormName}`}
+                    </button>
+                ` : `
+                    <button class="btn-details" onclick="abrirModalDetalhes(standsData.find(s => s.id === ${stand.id}))"><i class="fas fa-eye"></i> VER DETALHES</button>
+                `}
+                <button class="fav-btn ${isFavorito(stand.id) ? 'active' : ''}" onclick="toggleFavorito(${stand.id})">
+                    <i class="fas fa-heart"></i> ${isFavorito(stand.id) ? ' FAVORITADO' : ' FAVORITAR'}
+                </button>
+            </div>
+        </div>
+    `}).join('');
+        } else {
+            container.innerHTML = dados.map(port => {
+                const imagemPortador = getImagemPortador(port.nome);
+                return `
+                <div class="user-card" onclick="abrirModalPortador(portadores.find(p => p.nome === '${port.nome.replace(/'/g, "\\'")}'))">
+                    <div class="user-preview" style="background: ${imagemPortador ? imagemPortador : 'linear-gradient(135deg, #1a1a2e, #16213e)'}; background-size: cover; background-position: center;">
+                        <span class="part-tag">${port.parte}</span>
+                        <span class="fav-badge" style="background:#f1c40faa; color:#0a0a0a;">${port.quantidadeStands} Stand(s)</span>
+                    </div>
+                    <div class="user-content">
+                        <div class="stand-title"><i class="fas fa-user-circle"></i> ${port.nome}</div>
+                        <div class="stand-desc">${port.desc}</div>
+                        <button class="btn-details" onclick="event.stopPropagation(); abrirModalPortador(portadores.find(p => p.nome === '${port.nome.replace(/'/g, "\\'")}'))">VER STANDS</button>
+                    </div>
+                </div>
+            `}).join('');
         }
     }
 
-    // Modal de Stand
-    function openStandModal(standId) {
-        const stand = standsNormais.find(s => s.id === standId);
-        if (!stand) return;
-        const modal = document.getElementById('standModal');
-        const modalContent = document.getElementById('modalDynamicContent');
-        modalContent.innerHTML = `
-            <div class="modal-close" id="closeModalBtnInner">&times;</div>
-            <h2 style="color:#ffd966; font-family:Orbitron;"><i class="fas fa-dragon"></i> ${stand.name}</h2>
-            <p><i class="fas fa-user"></i> <strong>Portador:</strong> ${stand.user}</p>
-            <p><i class="fas fa-tag"></i> <strong>Parte:</strong> ${stand.parte}</p>
-            <p style="margin:1rem 0; line-height:1.5;">${stand.fullDesc || stand.desc}</p>
-            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:1rem;">
-                ${stand.stats.map(s => `<span style="background:#2e293c; padding:4px 12px; border-radius:30px;"><i class="fas fa-chart-line"></i> ${s}</span>`).join('')}
-            </div>
-            <hr style="margin:1rem 0; border-color:#f1c40f33;">
-            <p style="font-size:0.8rem; color:#aaa;"><i class="fas fa-info-circle"></i> Este é um dos Stands mais emblemáticos do universo JoJo.</p>
-        `;
-        modal.style.display = 'flex';
-        
-        const closeFn = () => modal.style.display = 'none';
-        setTimeout(() => {
-            const closeBtn = document.getElementById('closeModalBtnInner');
-            if (closeBtn) closeBtn.onclick = closeFn;
-        }, 100);
-        document.getElementById('closeModalBtn').onclick = closeFn;
-        window.onclick = (e) => { if(e.target === modal) closeFn(); };
+    function atualizarFiltros() {
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-part') === activeFilter) btn.classList.add('active');
+        });
     }
 
-    // Modal de Portador
-    function openUserModal(userName) {
-        const portador = portadores.find(p => p.nome === userName);
-        if (!portador) return;
-        const modal = document.getElementById('standModal');
-        const modalContent = document.getElementById('modalDynamicContent');
-        modalContent.innerHTML = `
-            <div class="modal-close" id="closeModalBtnInner">&times;</div>
-            <h2 style="color:#ffd966; font-family:Orbitron;"><i class="fas fa-user-circle"></i> ${portador.nome}</h2>
-            <p><i class="fas fa-tag"></i> <strong>Parte:</strong> ${portador.parte}</p>
-            <p><i class="fas fa-dragon"></i> <strong>Stands que possui:</strong> ${portador.quantidadeStands}</p>
-            <div style="display:flex; flex-wrap:wrap; gap:10px; margin:1.5rem 0;">
-                ${portador.stands.map(stand => `<span style="background:#f1c40f22; border:1px solid #f1c40f66; padding:8px 16px; border-radius:40px;"><i class="fas fa-dice-d6"></i> ${stand}</span>`).join('')}
-            </div>
-            <hr style="margin:1rem 0; border-color:#f1c40f33;">
-            <p style="font-size:0.8rem; color:#aaa;"><i class="fas fa-history"></i> Este personagem é um dos portadores de Stand na série JoJo's Bizarre Adventure.</p>
-        `;
-        modal.style.display = 'flex';
-        
-        const closeFn = () => modal.style.display = 'none';
-        setTimeout(() => {
-            const closeBtn = document.getElementById('closeModalBtnInner');
-            if (closeBtn) closeBtn.onclick = closeFn;
-        }, 100);
-        document.getElementById('closeModalBtn').onclick = closeFn;
-        window.onclick = (e) => { if(e.target === modal) closeFn(); };
-    }
-
-    // Setup Tabs
-    function setupTabs() {
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        tabBtns.forEach(btn => {
+    function setupEventos() {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 activeTab = btn.getAttribute('data-tab');
-                
-                if (activeTab === 'stands') {
-                    renderStands();
-                } else {
-                    renderPortadores();
-                }
+                renderizarConteudo();
             });
         });
-    }
 
-    // Setup Filtros
-    function setupFilters() {
-        const btns = document.querySelectorAll('.filter-btn');
-        btns.forEach(btn => {
+        document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                btns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 activeFilter = btn.getAttribute('data-part');
-                
-                if (activeTab === 'stands') {
-                    renderStands();
-                } else {
-                    renderPortadores();
-                }
+                renderizarConteudo();
             });
         });
+
+        document.getElementById('closeLoginModalBtn')?.addEventListener('click', fecharModalLogin);
+        document.getElementById('closeDetailsModalBtn')?.addEventListener('click', fecharModalDetalhes);
+        window.onclick = (e) => {
+            if (e.target === document.getElementById('loginModal')) fecharModalLogin();
+            if (e.target === document.getElementById('detailsModal')) fecharModalDetalhes();
+        };
     }
 
-    // Expor funções globalmente
+    // EXPOR FUNÇÕES
+    window.toggleFavorito = toggleFavorito;
+    window.abrirModalLogin = abrirModalLogin;
+    window.abrirModalRegister = abrirModalRegister;
+    window.fazerLogout = fazerLogout;
+    window.abrirModalDetalhes = abrirModalDetalhes;
+    window.abrirModalPortador = abrirModalPortador;
     window.evolveStand = evolveStand;
     window.resetStand = resetStand;
-    window.openStandModal = openStandModal;
-    window.openUserModal = openUserModal;
 
-    // Inicializar
+    // INICIALIZAR
     initEvolutionState();
-    setupTabs();
-    setupFilters();
-    renderStands();
+    carregarDados();
+    setupEventos();
+    renderizarConteudo();
 </script>
 </body>
 </html>
